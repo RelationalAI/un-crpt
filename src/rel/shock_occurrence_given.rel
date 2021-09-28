@@ -1,0 +1,25 @@
+entity ShockOccurrence row_to_shock_occurrence = row_from[sample_shock_occurrence_csv]
+def shock_occurrence_row = transpose[row_to_shock_occurrence]
+def shock_occurrence = cell_from[shock_occurrence_row, sample_shock_occurrence_csv]
+
+def shock_occurrence_id = shock_occurrence:id
+def shock_occurrence_subtype(s, st) = 
+    shock_occurrence:subtype(s, stn) and 
+    st = from_shock_subtype_name[stn] 
+    from stn
+def shock_occurrence_type(s, t) =
+    shock_occurrence_subtype(s, st) and 
+    shock_subtype_belongs_to_shock_type(st, t)
+    from st
+def shock_occurrence_group(s, g) =
+    shock_occurrence_type(s, t) and 
+    shock_type_belongs_to_shock_group(t, g)
+    from t
+def shock_occurrence_number_of_casualties = shock_occurrence:nrcasualties
+def shock_occurrence_number_of_assets = shock_occurrence:nrassets
+def shock_occurrence_date = shock_occurrence:occurrencedate
+def shock_occurrence_number_of_economic_losses = shock_occurrence:nreconomiclosses
+def shock_occurrence_number_of_displaced = shock_occurrence:nrdisplaced
+def shock_occurrence_number_of_injured = shock_occurrence:nrinjured
+def shock_occurrence_caused_by = shock_occurrence:causedby
+def shock_occurrence_causes = transpose[shock_occurrence_caused_by]

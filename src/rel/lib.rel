@@ -1,0 +1,207 @@
+/**
+  * Template for extracting an attribute of an entity from a CSV file when
+  *   that file conforms to the entity master-data pattern.
+  */
+@inline
+def row_from[C](row) = C(_, row, _)
+
+@inline
+def row_from[C](file_index, row) = C(file_index, row, _, _)
+
+@inline
+def row_from_by_key[KEYSPEC,C](key) = C(ks, _, key) and KEYSPEC(ks) from ks
+
+@inline
+def cell_from_by_key[KEYSPEC,R,C](attribute, p, v) =
+    exists(ks, row, key: KEYSPEC(ks) and
+        R(p, key) and
+        C(ks, row, key) and
+        C(attribute, row, v) and
+        (String(v) and not empty_string(v)
+            or
+            Date(v) and not empty_date(v) and not default_end_date(v)
+            or
+            not String(v) and not Date(v))
+    )
+
+@inline
+def aggregated_rows_from[C, AGGR, group_by_attribute, aggr_attribute] = group, aggr_value: 
+    aggr_value = AGGR[v: 
+        valid_value(v) and
+        C(row, aggr_attribute, v) and 
+        C(row, group_by_attribute, group) 
+        from row]
+
+@inline
+def aggregated_rows_from[C, AGGR, group_by_attribute, aggr_attribute] = group, aggr_value: 
+    aggr_value = AGGR[v: 
+        valid_value(v) and
+        C(file_index, row, aggr_attribute, v) and 
+        C(file_index, row, group_by_attribute, group) 
+        from file_index, row]
+
+@inline
+def cell_from[R,C](attribute, p, v) =
+    R(p, row) and
+    C(attribute, row, v) and
+    (String(v) and not empty_string(v)
+        or
+        Date(v) and not empty_date(v) and not default_end_date(v)
+        or
+        not String(v) and not Date(v))
+    from row
+
+@inline
+def cell_from[R,C](attribute, p, v) =
+    R(p, file_idx, row) and
+    C(file_idx, row, attribute, v) and
+    (String(v) and not empty_string(v)
+        or
+        Date(v) and not empty_date(v) and not default_end_date(v)
+        or
+        not String(v) and not Date(v))
+    from row, file_idx
+
+@inline
+def aggregated_cell_from[R, C, AGGR, aggr_attribute] = p, aggr_value:
+    R(group, _, p) and
+    aggr_value = AGGR[v:
+        valid_value(v) and
+        C(row, aggr_attribute, v) and 
+        C(row, group_by_attribute, group) 
+        from row, group_by_attribute]
+    from group
+
+@inline
+def aggregated_cell_from[R, C, AGGR, aggr_attribute] = p, aggr_value:
+    R(group, _, p) and
+    aggr_value = AGGR[v:
+        valid_value(v) and
+        C(file_index, row, aggr_attribute, v) and 
+        C(file_index, row, group_by_attribute, group) 
+        from file_index, row, group_by_attribute]
+    from group
+
+@inline
+def cell_is_true[R](attribute, p) = R[attribute](p, yes_code)
+
+/**
+ * Helper rules to convert between date and datetime
+ */
+@inline 
+def datetime_to_date(dttm, dt) =
+    dt = parse_date[format_datetime[dttm, "Y-m-d", "00:00"],"Y-m-d"]
+
+@inline 
+def date_to_datetime(dt, dttm) =
+    year_0 = date_year[datetime_to_date[nanoseconds_to_datetime[0]]] and
+    y = date_year[dt] and 
+    d = date_dayofyear[dt] and
+    leap_d = count[
+        (x,(modulo[x, 4] = 0 and not modulo[x, 100] = 0) or modulo[x, 400] = 0)
+        from x in range[year_0, y - 1, 1]] and 
+    dttm = nanoseconds_to_datetime[ ((y - year_0) * 365 + leap_d + d - 1) * 86400000000000]
+    from y, d, year_0, leap_d
+    
+/**
+  * Type definitions
+  */
+def Age = range[0, 120, 1]
+def YesOrNo = yes_code ; no_code
+
+def yes_code = { "y"; "Y"; "yes"; "YES", "Yes" }
+def no_code = { "n"; "N"; "no"; "NO", "No" }
+
+def empty_date = parse_date["0001-01-01", default_date_format]
+def default_end_date = parse_date["9999-12-31", default_date_format]
+def default_date_format = "Y-m-d"
+def default_end_datetime = parse_datetime["9999-12-31T23:59:59", default_datetime_format]
+def default_datetime_format = "Y-m-dTH:M:S"
+def empty_string = ""
+
+@inline
+def valid_value(v) =
+    String(v) and not empty_string(v)
+    or
+    Date(v) and not empty_date(v) and not default_end_date(v)
+    or
+    not String(v) and not Date(v)
+
+/**
+  * Helper rules to easily access the current date and compute difference
+  * between two dates expressed in months
+  */
+// def current_date = current_date_csv[_,_]
+
+/**
+  * Note: the function below uses floor() on the difference to obtain an integer
+  * difference between the first and the second parameters (order is important)
+  */
+@inline
+def difference_in_months = dt1, dt2, m_diff:
+    t1 = datetime_to_nanoseconds[date_to_datetime[dt1]] and 
+    t2 = datetime_to_nanoseconds[date_to_datetime[dt2]] and 
+    diff_ns = t1 - t2 and
+    diff_dttm = nanoseconds_to_datetime[diff_ns] and
+    date_0 = nanoseconds_to_datetime[0] and
+    m_diff = 
+        (datetime_year[diff_dttm, "00:00"] - datetime_year[date_0, "00:00"]) * 12 + 
+        datetime_month[diff_dttm, "00:00"] - datetime_month[date_0, "00:00"]
+    from t1, t2, diff_ns, diff_dttm, date_0
+
+/*
+ * Helper rules to convert hash values to human-readable identifiers
+ */
+@inline
+def view_identifiers[R, IDLOOKUP1](id1) =
+    top(10, R, _, e1) and
+    IDLOOKUP1(e1, id1) 
+    from e1
+
+@inline
+def view_identifiers[R, IDLOOKUP1, IDLOOKUP2](id1, id2) =
+    top(10, R, _, e1, e2) and
+    IDLOOKUP1(e1, id1) and
+    IDLOOKUP2(e2, id2) 
+    from e1, e2
+
+@inline
+def view_identifiers[R, IDLOOKUP1, IDLOOKUP2, IDLOOKUP3](id1, id2, id3) =
+    top(10, R, _, e1, e2, e3) and
+    IDLOOKUP1(e1, id1) and
+    IDLOOKUP2(e2, id2) and
+    IDLOOKUP3(e3, id3)
+    from e1, e2, e3
+
+@inline
+def view_identifiers[R, IDLOOKUP1, IDLOOKUP2, IDLOOKUP3, IDLOOKUP4](id1, id2, id3, id4) =
+    top(10, R, _, e1, e2, e3, e4) and
+    IDLOOKUP1(e1, id1) and
+    IDLOOKUP2(e2, id2) and
+    IDLOOKUP3(e3, id3) and
+    IDLOOKUP4(e4, id4)
+    from e1, e2, e3, e4
+
+@inline
+def view_identifiers[R, IDLOOKUP1, IDLOOKUP2, IDLOOKUP3, IDLOOKUP4, IDLOOKUP5](id1, id2, id3, id4, id5) =
+    top(10, R, _, e1, e2, e3, e4, e5) and
+    IDLOOKUP1(e1, id1) and
+    IDLOOKUP2(e2, id2) and
+    IDLOOKUP3(e3, id3) and
+    IDLOOKUP4(e4, id4) and 
+    IDLOOKUP5(e5, id5)
+    from e1, e2, e3, e4, e5
+
+@inline
+def view_identifiers[R, IDLOOKUP1, IDLOOKUP2, IDLOOKUP3, IDLOOKUP4, IDLOOKUP5, IDLOOKUP6](id1, id2, id3, id4, id5, id6) =
+    top(10, R, _, e1, e2, e3, e4, e5, e6) and
+    IDLOOKUP1(e1, id1) and
+    IDLOOKUP2(e2, id2) and
+    IDLOOKUP3(e3, id3) and
+    IDLOOKUP4(e4, id4) and 
+    IDLOOKUP5(e5, id5) and 
+    IDLOOKUP6(e6, id6)
+    from e1, e2, e3, e4, e5, e6
+
+@inline
+def identity_id[x] = x

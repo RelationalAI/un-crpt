@@ -1,0 +1,15 @@
+// For notebook
+// def config_shock_occurrence[:data] = csv_file_contents
+// For local testing
+
+def config_shock_occurrence[:path] = "/Users/mbur/git/un-crpt/data/sample_shock_occurrences.csv"
+
+def config_shock_occurrence[:schema, :id] = "int"
+def config_shock_occurrence[:schema, :nrdisplaced] = "int"
+def config_shock_occurrence[:schema, :nrinjured] = "int"
+def config_shock_occurrence[:schema, :nrcasualties] = "int"
+def config_shock_occurrence[:schema, :nrassets] = "int"
+def config_shock_occurrence[:schema, :nreconomiclosses] = "int"
+def config_shock_occurrence[:schema, :occurrencedate] = "date"
+
+def sample_shock_occurrence_csv = load_csv[config_shock_occurrence]
