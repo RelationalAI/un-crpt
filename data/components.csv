@@ -1,0 +1,49 @@
+code;name
+1.1;Urban Form
+1.2;Land Tenure
+1.3;Housing
+1.4;Built Assets
+2.1;Water Resources
+2.2;Energy Resources
+2.3;Food Supply Chain
+2.4;Urban Logistics
+3.1;Energy
+3.2;Water
+3.3;Solid Waste
+3.4;Telecommunications
+4.1;Urban Mobility
+4.2;Inter-regional Mobility
+5.1;Cemeteries and Crematoriums
+5.2;Civil Registration Services
+5.3;Criminal Justice and Law Enforcement
+5.4;Cultural Heritage and Cultural Activities
+5.5;Emergency and rescue services
+5.6;Food Inspection and Monitor
+5.7;Diseases Surveillance and Response System
+5.8;Municipal Taxes
+5.9;Public Lighting
+6.1;Social Accountability
+6.2;Access to social protection floor for all
+6.3;Access to Basic Social Services
+7.1;Local Economic Structure
+7.2;Fiscal Stability and Municipal Finance
+7.3;Market Connectivity
+8.1;Ecosystem Services
+8.2;Ecological Footprint
+8.3;Biodiversity & Green Infrastructure
+8.4;Environmental Quality
+3.1.1;Energy Supply - Buildings
+3.1.2;Energy Supply - Mobility
+3.2.1;Water Supply
+3.2.2;Wastewater and Sanitation
+3.2.3;Stormwater
+3.4.1;Phone & Internet
+3.4.2;TV & Radio
+5.3.1;Violence and Insecurity
+5.3.2;Law Enforcement
+5.3.3;Detention Facilities
+5.3.4;Justice Institution
+6.3.1;Education
+6.3.2;Health
+6.3.3;Social Care
+6.3.4;Food
