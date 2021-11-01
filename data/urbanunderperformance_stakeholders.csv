@@ -1,0 +1,46 @@
+Organization 1;Organization 2;RelationshipRole
+SEMPLAN;FIEPI;Communicates
+SEMPLAN;AFD;Formal Partnership
+SEMPLAN;Banco Mundial;Formal Partnership
+SEMPLAN;CAF;Formal Partnership
+SEMPLAN;Ministerio da Economia;Legally Engages
+SEMPLAN;NBD;Formal Partnership
+SEMPLAN;BNDES;Formal Partnership
+SEMPLAN;Caixa Economica;Formal Partnership
+SEMPLAN;MDR;Legally Engages
+SEMPLAN;Banco do Brasil;Formal Partnership
+SEMPLAN;UESPI;Communicates
+SEMPLAN;SEMDUH;Formal Partnership
+SEMPLAN;SEMEST;Formal Partnership
+SEMDUH;SINDUSCON;Formal Partnership
+SEMDUH;SEMDEC;Formal Partnership
+SEMDUH;World Bank;Communicates
+SEMDUH;SEMPLAN;Formal Partnership
+CDL;Ministerio da Economia;Communicates
+CDL;SEMDEC;Formal Partnership
+CDL;SEMEST;Formal Partnership
+SEMEST;SEBRAE;Formal Partnership
+SEMEST;CDL;Formal Partnership
+SEMEST;UFPI;Formal Partnership
+SEMEST;UESPI;Formal Partnership
+SEMEST;IFPI;Formal Partnership
+SEMEST;SEMPLAN;Formal Partnership
+SEMDEC;SINDCOM;Formal Partnership
+SEMDEC;MOVE-PI;Formal Partnership
+SEMDEC;Banco do Brasil;Formal Partnership
+SEMDEC;UFPI;Formal Partnership
+SEMDEC;UESPI;Communicates
+SEMDEC;IFPI;Formal Partnership
+SEMDEC;SEBRAE;Formal Partnership
+SEMDEC;CDL;Formal Partnership
+SEBRAE;IFPI;Formal Partnership
+SEBRAE;UFPI;Formal Partnership
+SEBRAE;SEMEST;Formal Partnership
+SEBRAE;UESPI;Formal Partnership
+FIEPI;SEMPLAN;Communicates
+FIEPI;Sinduscon;Formal Partnership
+Caixa Economica;SEMPLAN;Formal Partnership
+Caixa Economica;MDR;Formal Partnership
+Caixa Economica;World Bank;Formal Partnership
+IFPI;UFPI;Formal Partnership
+IFPI;SEBRAE;Formal Partnership
