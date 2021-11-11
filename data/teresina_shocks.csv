@@ -1,4 +1,4 @@
-Group,Type,Subtype,Date,People directly affected,Prople Indirectly affected,Triggered Shock,Urban Elements,Casualties,Injured,Displaced,Loss of working days,Loss of jobs
+group,type,subtype,date,people_directly_affected,people_indirectly_affected,triggered_shock,urban_elements,casualties,injured,displaced,loss_of_working_days,loss_of_jobs
 Technological,Failure of infraestructure & services,Built infrastructure breakdown,1/1/85,50000,70000,Fluvial flood,Built Environment; Basic Infraestructure; Economy; Municipal Public Services,,,,,
 Natural,Flood,Fluvial Flood,1/1/00,,,,,,,,,
 Natural,Mass Movement,None,1/1/00,,,,,,,,,
