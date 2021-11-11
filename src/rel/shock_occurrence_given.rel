@@ -1,6 +1,6 @@
-entity ShockOccurrence row_to_shock_occurrence = row_from[sample_shock_occurrence_csv]
+entity ShockOccurrence row_to_shock_occurrence = row_from[teresina_shocks_csv]
 def shock_occurrence_row = transpose[row_to_shock_occurrence]
-def shock_occurrence = cell_from[shock_occurrence_row, sample_shock_occurrence_csv]
+def shock_occurrence = cell_from[shock_occurrence_row, teresina_shocks_csv]
 
 def shock_occurrence_id = shock_occurrence:id
 def shock_occurrence_subtype(s, st) = 
@@ -15,11 +15,18 @@ def shock_occurrence_group(s, g) =
     shock_occurrence_type(s, t) and 
     shock_type_belongs_to_shock_group(t, g)
     from t
-def shock_occurrence_number_of_casualties = shock_occurrence:nrcasualties
-def shock_occurrence_number_of_assets = shock_occurrence:nrassets
-def shock_occurrence_date = shock_occurrence:occurrencedate
-def shock_occurrence_number_of_economic_losses = shock_occurrence:nreconomiclosses
-def shock_occurrence_number_of_displaced = shock_occurrence:nrdisplaced
-def shock_occurrence_number_of_injured = shock_occurrence:nrinjured
-def shock_occurrence_caused_by = shock_occurrence:causedby
-def shock_occurrence_causes = transpose[shock_occurrence_caused_by]
+
+def shock_occurrence_date = shock_occurrence:date
+def shock_occurrence_people_directly_affected = shock_occurrence:people_directly_affected
+def shock_occurrence_people_indirectly_affected = shock_occurrence:people_indirectly_affected
+def shock_occurrence_caused_shock = shock_occurrence:triggered_shock
+def shock_occurrence_caused_by_shock = transpose[shock_occurrence_caused_shock] 
+def shock_occurrence_affected_urban_elements = shock_occurrence:urban_elements
+def shock_occurrence_number_of_casualties = shock_occurrence:casualties
+def shock_occurrence_number_of_injured = shock_occurrence:injured
+def shock_occurrence_number_of_displaced = shock_occurrence:displaced
+def shock_occurrence_loss_of_working_days = shock_occurrence:loss_of_working_days
+def shock_occurrence_loss_of_jobs = shock_occurrence:loss_of_jobs
+
+// TODO add IC to check consistency of group-type-subtype wrt. the structure we 
+// already have
