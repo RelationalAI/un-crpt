@@ -10,7 +10,7 @@ function install_rel(conn)
 
         SourceFile(src_root * "/input.rel"),
         SourceFile(src_root * "/shock_classifiers_given.rel"),
-        SourceFile(src_root * "/shock_occurrence_given.rel"),
+        # SourceFile(src_root * "/shock_occurrence_given.rel"),
     ]
 
     println("Installing Rel Files...")

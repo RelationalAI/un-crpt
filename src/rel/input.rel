@@ -1,15 +1,127 @@
-// For notebook
-// def config_shock_occurrence[:data] = csv_file_contents
-// For local testing
 
-def config_shock_occurrence[:path] = "/Users/mbur/git/un-crpt/data/sample_shock_occurrences.csv"
+/* In this line, put //* for notebook, and put only /* for local execution
+def config_components[:data] = csv_file_components
+def config_economic_underperformance_indicators_teresina[:data] = csv_file_economic_underperformance_indicators_teresina
+def config_elements[:data] = csv_file_elements
+def config_ppi[:data] = csv_file_ppi
+def config_shocks_prioritymatters[:data] = csv_file_shocks_prioritymatters
+def config_stakeholders_description[:data] = csv_file_stakeholders_description
+def config_stresses_prioritymatters[:data] = csv_file_stresses_prioritymatters
+def config_stresses_urbanelements[:data] = csv_file_stresses_urbanelements
+def config_stressors_stresses[:data] = csv_file_stressors_stresses
+def config_teresina_shocks[:data] = csv_file_teresina_shocks
+def config_teresina_urbanunderperformance_shocks_indicators[:data] = csv_file_teresina_urbanunderperformance_shocks_indicators
+def config_teresina_urbanunderperformance_stresses_indicators[:data] = csv_file_teresina_urbanunderperformance_stresses_indicators
+def config_urbanunderperformance_stakeholders[:data] = csv_file_urbanunderperformance_stakeholders
+/*/
+// TODO: update path "/Users/mbur/git/un-crpt" when running locally
+def config_components[:path] = "/Users/mbur/git/un-crpt/data/components.csv"
+def config_economic_underperformance_indicators_teresina[:path] = "/Users/mbur/git/un-crpt/data/economic_underperformance_indicators_teresina.csv"
+def config_elements[:path] = "/Users/mbur/git/un-crpt/data/elements.csv"
+def config_ppi[:path] = "/Users/mbur/git/un-crpt/data/ppi.csv"
+def config_shocks_prioritymatters[:path] = "/Users/mbur/git/un-crpt/data/shocks_prioritymatters.csv"
+def config_stakeholders_description[:path] = "/Users/mbur/git/un-crpt/data/stakeholders_description.csv"
+def config_stresses_prioritymatters[:path] = "/Users/mbur/git/un-crpt/data/stresses_prioritymatters.csv"
+def config_stresses_urbanelements[:path] = "/Users/mbur/git/un-crpt/data/stresses_urbanelements.csv"
+def config_stressors_stresses[:path] = "/Users/mbur/git/un-crpt/data/stressors_stresses.csv"
+def config_teresina_shocks[:path] = "/Users/mbur/git/un-crpt/data/teresina_shocks.csv"
+def config_teresina_urbanunderperformance_shocks_indicators[:path] = "/Users/mbur/git/un-crpt/data/teresina_urbanunderperformance_shocks_indicators.csv"
+def config_teresina_urbanunderperformance_stresses_indicators[:path] = "/Users/mbur/git/un-crpt/data/teresina_urbanunderperformance_stresses_indicators.csv"
+def config_urbanunderperformance_stakeholders[:path] = "/Users/mbur/git/un-crpt/data/urbanunderperformance_stakeholders.csv"
+//*/
 
-def config_shock_occurrence[:schema, :id] = "int"
-def config_shock_occurrence[:schema, :nrdisplaced] = "int"
-def config_shock_occurrence[:schema, :nrinjured] = "int"
-def config_shock_occurrence[:schema, :nrcasualties] = "int"
-def config_shock_occurrence[:schema, :nrassets] = "int"
-def config_shock_occurrence[:schema, :nreconomiclosses] = "int"
-def config_shock_occurrence[:schema, :occurrencedate] = "date"
+def config_components[:schema, :code] = "string"
+def config_components[:schema, :name] = "string"
+def config_components[:syntax, :delim] = ';'
+def components_csv = load_csv[config_components]
 
-def sample_shock_occurrence_csv = load_csv[config_shock_occurrence]
+def config_economic_underperformance_indicators_teresina[:schema, :code] = "string"
+def config_economic_underperformance_indicators_teresina[:schema, :description] = "string"
+def config_economic_underperformance_indicators_teresina[:schema, :value] = "string"
+def config_economic_underperformance_indicators_teresina[:syntax, :delim] = ';'
+def economic_underperformance_indicators_teresina_csv = load_csv[config_economic_underperformance_indicators_teresina]
+
+def config_elements[:schema, :code] = "string"
+def config_elements[:schema, :short_name] = "string"
+def config_elements[:schema, :name] = "string"
+def config_elements[:syntax, :delim] = ';'
+def elements_csv = load_csv[config_elements]
+
+def config_ppi[:schema, :type] = "string"
+def config_ppi[:schema, :description] = "string"
+def config_ppi[:schema, :year] = "int"
+def config_ppi[:schema, :status] = "string"
+def config_ppi[:schema, :category] = "string"
+def config_ppi[:schema, :url] = "string"
+def config_ppi[:syntax, :delim] = ';'
+def ppi_csv = load_csv[config_ppi]
+
+def config_shocks_prioritymatters[:schema, :shock] = "string"
+// FIXME if this is the column name that is picked up from the file header
+def config_shocks_prioritymatters[:schema, :priority_matter] = "string"
+def config_shocks_prioritymatters[:syntax, :delim] = ';'
+def shocks_prioritymatters_csv = load_csv[config_shocks_prioritymatters]
+
+def config_stakeholders_description[:schema, :organization] = "string"
+def config_stakeholders_description[:schema, :description] = "string"
+def config_stakeholders_description[:syntax, :delim] = ';'
+def stakeholders_description_csv = load_csv[config_stakeholders_description]
+
+def config_stresses_prioritymatters[:schema, :stress] = "string"
+// FIXME if this is the column name that is picked up from the file header
+def config_stresses_prioritymatters[:schema, :priority_matter] = "string"
+def config_stresses_prioritymatters[:syntax, :delim] = ';'
+def stresses_prioritymatters_csv = load_csv[config_stresses_prioritymatters]
+
+def config_stresses_urbanelements[:schema, :stress] = "string"
+def config_stresses_urbanelements[:schema, :urban_element_code] = "string"
+def config_stresses_urbanelements[:schema, :urban_element_description] = "string"
+def config_stresses_urbanelements[:syntax, :delim] = ';'
+def stresses_urbanelements_csv = load_csv[config_stresses_urbanelements]
+
+def config_stressors_stresses[:schema, :stressor] = "string"
+def config_stressors_stresses[:schema, :stress] = "string"
+def config_stressors_stresses[:syntax, :delim] = ';'
+def stressors_stresses_csv = load_csv[config_stressors_stresses]
+
+def config_teresina_shocks[:schema, :group] = "string"
+def config_teresina_shocks[:schema, :type] = "string"
+def config_teresina_shocks[:schema, :subtype] = "string"
+// TODO: make sure dates are parsed correctly, otherwise write a transformation rule
+def config_teresina_shocks[:schema, :date] = "date"
+// TODO: make sure that the column names are correct here (check if spaces are converted to underscores automatically)
+def config_teresina_shocks[:schema, :people_directly_affected] = "int"
+def config_teresina_shocks[:schema, :people_indirectly_affected] = "int"
+def config_teresina_shocks[:schema, :triggered_shock] = "string"
+def config_teresina_shocks[:schema, :urban_elements] = "string"
+def config_teresina_shocks[:schema, :casualties] = "int"
+def config_teresina_shocks[:schema, :injured] = "int"
+def config_teresina_shocks[:schema, :displaced] = "int"
+def config_teresina_shocks[:schema, :loss_of_working_days] = "int"
+def config_teresina_shocks[:schema, :loss_of_jobs] = "int"
+def config_teresina_shocks[:syntax, :delim] = ','
+def teresina_shocks_csv = load_csv[config_teresina_shocks]
+
+def config_teresina_urbanunderperformance_shocks_indicators[:schema, :priority_matter] = "string"
+def config_teresina_urbanunderperformance_shocks_indicators[:schema, :shock] = "string"
+def config_teresina_urbanunderperformance_shocks_indicators[:schema, :code] = "string"
+def config_teresina_urbanunderperformance_shocks_indicators[:schema, :description] = "string"
+def config_teresina_urbanunderperformance_shocks_indicators[:schema, :value] = "string"
+def config_teresina_urbanunderperformance_shocks_indicators[:syntax, :delim] = ';'
+def teresina_urbanunderperformance_shocks_indicators_csv = load_csv[config_teresina_urbanunderperformance_shocks_indicators]
+
+def config_teresina_urbanunderperformance_stresses_indicators[:schema, :priority_matter] = "string"
+def config_teresina_urbanunderperformance_stresses_indicators[:schema, :stress] = "string"
+def config_teresina_urbanunderperformance_stresses_indicators[:schema, :stressor] = "string"
+def config_teresina_urbanunderperformance_stresses_indicators[:schema, :code] = "string"
+def config_teresina_urbanunderperformance_stresses_indicators[:schema, :description] = "string"
+def config_teresina_urbanunderperformance_stresses_indicators[:schema, :value] = "string"
+def config_teresina_urbanunderperformance_stresses_indicators[:syntax, :delim] = ';'
+def teresina_urbanunderperformance_stresses_indicators_csv = load_csv[config_teresina_urbanunderperformance_stresses_indicators]
+
+// TODO: make sure that the column names are correct here (check if spaces are converted to underscores automatically)
+def config_urbanunderperformance_stakeholders[:schema, :organization_1] = "string"
+def config_urbanunderperformance_stakeholders[:schema, :organization_2] = "string"
+def config_urbanunderperformance_stakeholders[:schema, :relationship_role] = "string"
+def config_urbanunderperformance_stakeholders[:syntax, :delim] = ';'
+def urbanunderperformance_stakeholders_csv = load_csv[config_urbanunderperformance_stakeholders]
