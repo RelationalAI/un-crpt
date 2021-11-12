@@ -57,7 +57,6 @@ def config_ppi[:syntax, :delim] = ';'
 def ppi_csv = load_csv[config_ppi]
 
 def config_shocks_prioritymatters[:schema, :shock] = "string"
-// FIXME if this is the column name that is picked up from the file header
 def config_shocks_prioritymatters[:schema, :priority_matter] = "string"
 def config_shocks_prioritymatters[:syntax, :delim] = ';'
 def shocks_prioritymatters_csv = load_csv[config_shocks_prioritymatters]
@@ -68,7 +67,6 @@ def config_stakeholders_description[:syntax, :delim] = ';'
 def stakeholders_description_csv = load_csv[config_stakeholders_description]
 
 def config_stresses_prioritymatters[:schema, :stress] = "string"
-// FIXME if this is the column name that is picked up from the file header
 def config_stresses_prioritymatters[:schema, :priority_matter] = "string"
 def config_stresses_prioritymatters[:syntax, :delim] = ';'
 def stresses_prioritymatters_csv = load_csv[config_stresses_prioritymatters]
@@ -89,7 +87,6 @@ def config_teresina_shocks[:schema, :type] = "string"
 def config_teresina_shocks[:schema, :subtype] = "string"
 // TODO: make sure dates are parsed correctly, otherwise write a transformation rule
 def config_teresina_shocks[:schema, :date] = "date"
-// TODO: make sure that the column names are correct here (check if spaces are converted to underscores automatically)
 def config_teresina_shocks[:schema, :people_directly_affected] = "int"
 def config_teresina_shocks[:schema, :people_indirectly_affected] = "int"
 def config_teresina_shocks[:schema, :triggered_shock] = "string"
@@ -119,7 +116,6 @@ def config_teresina_urbanunderperformance_stresses_indicators[:schema, :value] =
 def config_teresina_urbanunderperformance_stresses_indicators[:syntax, :delim] = ';'
 def teresina_urbanunderperformance_stresses_indicators_csv = load_csv[config_teresina_urbanunderperformance_stresses_indicators]
 
-// TODO: make sure that the column names are correct here (check if spaces are converted to underscores automatically)
 def config_urbanunderperformance_stakeholders[:schema, :organization_1] = "string"
 def config_urbanunderperformance_stakeholders[:schema, :organization_2] = "string"
 def config_urbanunderperformance_stakeholders[:schema, :relationship_role] = "string"

@@ -1,6 +1,8 @@
 entity ShockOccurrence row_to_shock_occurrence = row_from[teresina_shocks_csv]
 def shock_occurrence_row = transpose[row_to_shock_occurrence]
 def shock_occurrence = cell_from[shock_occurrence_row, teresina_shocks_csv]
+// Similarly, here could be added shock occurrences from other locations as well
+// by employing the pattern shown in lines 1-3
 
 def shock_occurrence_id = shock_occurrence:id
 def shock_occurrence_subtype(s, st) = 

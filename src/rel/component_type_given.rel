@@ -1,0 +1,6 @@
+entity ComponentType row_to_component_type = row_from[components_csv]
+def component_type_row = transpose[row_to_component_type]
+def component_type = cell_from[component_type_row, components_csv]
+
+def component_type_code = component_type:code
+def component_type_name = component_type:name

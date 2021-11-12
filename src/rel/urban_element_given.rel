@@ -1,0 +1,7 @@
+entity UrbanElementType row_to_urban_element_type = row_from[elements_csv]
+def urban_element_type_row = transpose[row_to_urban_element_type]
+def urban_element_type = cell_from[urban_element_type_row, elements_csv]
+
+def urban_element_type_code = urban_element_type:code
+def urban_element_type_short_name = urban_element_type:short_name
+def urban_element_type_name = urban_element_type:name

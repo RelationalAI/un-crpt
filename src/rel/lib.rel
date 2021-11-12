@@ -6,7 +6,7 @@
 def row_from[C](row) = C(_, row, _)
 
 @inline
-def row_from[C](file_index, row) = C(file_index, row, _, _)
+def row_from[C](file_index, row) = C(file_index, _, row, _)
 
 @inline
 def row_from_by_key[KEYSPEC,C](key) = C(ks, _, key) and KEYSPEC(ks) from ks

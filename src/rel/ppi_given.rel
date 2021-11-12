@@ -1,0 +1,15 @@
+entity PPI row_to_ppi = row_from[ppi_csv]
+def ppi_row = transpose[row_to_ppi]
+def ppi = cell_from[ppi_row, ppi_csv]
+
+def ppi_type = ppi:type
+
+def Policy = p: ppi_type(p, "Policy")
+def Plan = p: ppi_type(p, "Plan")
+def Initiative = t: ppi_type(t, "Initiative")
+
+def ppi_description = ppi:description
+def ppi_year = ppi:year
+def ppi_status= ppi:status
+def ppi_category= ppi:category
+def ppi_url= ppi:url
