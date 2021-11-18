@@ -1,0 +1,6 @@
+entity Organization row_to_organization = row_from[stakeholders_description_csv]
+def organization_row = transpose[row_to_organization]
+def organization = cell_from[stakeholders_description_csv, organization_row]
+
+def organization_name = organization:organization
+def organization_description = organization:description

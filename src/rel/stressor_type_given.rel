@@ -1,0 +1,11 @@
+// TODO once data is available, replace constructor with master entity-style
+// entity creation
+entity StressorType stressor_type_from_name = stressors_stresses_csv[:stressor, _]
+
+def stressor_type_stress_type(stor,stss) = 
+    stressor_type_from_name(stor_n, stor) and 
+    stress_type_from_name(stss_n, stss) and 
+    stressors_stresses_csv(:stressor, r, stor_n) and
+    stressors_stresses_csv(:stress, r, stss_n)
+    from stor_n, stss_n, r
+def stress_type_stressor_type = transpose[stressor_type_stress_type]

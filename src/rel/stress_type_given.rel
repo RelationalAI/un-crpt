@@ -1,0 +1,14 @@
+// TODO once data is available, replace these constructors with master entity-style
+// entity creation
+entity StressType stress_type_from_name = stresses_prioritymatters_csv[:stress, _]
+entity StressType stress_type_from_name = stresses_urbanelements_csv[:stress, _]
+entity StressType stress_type_from_name = stressors_stresses_csv[:stress, _]
+
+
+def stress_type_prioritymatter(st, pm) = 
+    stresses_prioritymatters_csv(:priority_matter, r, pm_n) and 
+    stresses_prioritymatters_csv(:stress, r, st_n) and 
+    pm = prioritymatter_from_name[pm_n] and 
+    st = stress_type_from_name[st_n]
+    from pm_n, r, st_n
+def prioritymatter_stress_type = transpose[stress_type_prioritymatter]

@@ -12,6 +12,28 @@ def row_from[C](file_index, row) = C(file_index, _, row, _)
 def row_from_by_key[KEYSPEC,C](key) = C(ks, _, key) and KEYSPEC(ks) from ks
 
 @inline
+def cell_from[R,C](attribute, p, v) =
+    R(p, row) and
+    C(attribute, row, v) and
+    (String(v) and not empty_string(v)
+        or
+        Date(v) and not empty_date(v) and not default_end_date(v)
+        or
+        not String(v) and not Date(v))
+    from row
+
+@inline
+def cell_from[R,C](attribute, p, v) =
+    R(p, file_idx, row) and
+    C(file_idx, row, attribute, v) and
+    (String(v) and not empty_string(v)
+        or
+        Date(v) and not empty_date(v) and not default_end_date(v)
+        or
+        not String(v) and not Date(v))
+    from row, file_idx
+
+@inline
 def cell_from_by_key[KEYSPEC,R,C](attribute, p, v) =
     exists(ks, row, key: KEYSPEC(ks) and
         R(p, key) and
@@ -39,28 +61,6 @@ def aggregated_rows_from[C, AGGR, group_by_attribute, aggr_attribute] = group, a
         C(file_index, row, aggr_attribute, v) and 
         C(file_index, row, group_by_attribute, group) 
         from file_index, row]
-
-@inline
-def cell_from[R,C](attribute, p, v) =
-    R(p, row) and
-    C(attribute, row, v) and
-    (String(v) and not empty_string(v)
-        or
-        Date(v) and not empty_date(v) and not default_end_date(v)
-        or
-        not String(v) and not Date(v))
-    from row
-
-@inline
-def cell_from[R,C](attribute, p, v) =
-    R(p, file_idx, row) and
-    C(file_idx, row, attribute, v) and
-    (String(v) and not empty_string(v)
-        or
-        Date(v) and not empty_date(v) and not default_end_date(v)
-        or
-        not String(v) and not Date(v))
-    from row, file_idx
 
 @inline
 def aggregated_cell_from[R, C, AGGR, aggr_attribute] = p, aggr_value:

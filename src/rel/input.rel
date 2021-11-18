@@ -14,7 +14,8 @@ def config_teresina_urbanunderperformance_shocks_indicators[:data] = csv_file_te
 def config_teresina_urbanunderperformance_stresses_indicators[:data] = csv_file_teresina_urbanunderperformance_stresses_indicators
 def config_urbanunderperformance_stakeholders[:data] = csv_file_urbanunderperformance_stakeholders
 /*/
-// TODO: update path "/Users/mbur/git/un-crpt" when running locally
+// TODO: replace path prefix "/Users/mbur/git/un-crpt" with the root of the 
+// un-crpt repository when running locally
 def config_components[:path] = "/Users/mbur/git/un-crpt/data/components.csv"
 def config_economic_underperformance_indicators_teresina[:path] = "/Users/mbur/git/un-crpt/data/economic_underperformance_indicators_teresina.csv"
 def config_elements[:path] = "/Users/mbur/git/un-crpt/data/elements.csv"
