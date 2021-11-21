@@ -97,7 +97,7 @@ def config_teresina_shocks[:schema, :injured] = "int"
 def config_teresina_shocks[:schema, :displaced] = "int"
 def config_teresina_shocks[:schema, :loss_of_working_days] = "int"
 def config_teresina_shocks[:schema, :loss_of_jobs] = "int"
-def config_teresina_shocks[:syntax, :delim] = ','
+def config_teresina_shocks[:syntax, :delim] = ';'
 def teresina_shocks_csv = load_csv[config_teresina_shocks]
 
 def config_teresina_urbanunderperformance_shocks_indicators[:schema, :priority_matter] = "string"
