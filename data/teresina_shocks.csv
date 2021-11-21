@@ -1,4 +1,4 @@
-group,type,subtype,date,people_directly_affected,people_indirectly_affected,triggered_shock,urban_elements,casualties,injured,displaced,loss_of_working_days,loss_of_jobs
+group;type;subtype;date;people_directly_affected;people_indirectly_affected;triggered_shock;urban_elements;casualties;injured;displaced;loss_of_working_days;loss_of_jobs
 TECHNOLOGICAL;FAILURE OF INFRASTRUCTURE & SERVICES;Built Infrastructure Breakdown;1/1/85;50000;70000;Fluvial Flood;Built Environment;Basic Infraestructure;Economy;Municipal Public Services;;;;;
 NATURAL;FLOOD;Fluvial Flood;1/1/00;;;;;;;;;
 NATURAL;FLOOD;Fluvial Flood;1/1/01;;;;;;;;;
