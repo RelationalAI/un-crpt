@@ -1,7 +1,7 @@
 organization_1;organization_2;relationship_role
 SEMPLAN;FIEPI;Communicates
 SEMPLAN;AFD;Formal Partnership
-SEMPLAN;Banco Mundial;Formal Partnership
+SEMPLAN;World Bank;Formal Partnership
 SEMPLAN;CAF;Formal Partnership
 SEMPLAN;Ministerio da Economia;Legally Engages
 SEMPLAN;NBD;Formal Partnership
@@ -38,7 +38,7 @@ SEBRAE;UFPI;Formal Partnership
 SEBRAE;SEMEST;Formal Partnership
 SEBRAE;UESPI;Formal Partnership
 FIEPI;SEMPLAN;Communicates
-FIEPI;Sinduscon;Formal Partnership
+FIEPI;SINDUSCON;Formal Partnership
 Caixa Economica;SEMPLAN;Formal Partnership
 Caixa Economica;MDR;Formal Partnership
 Caixa Economica;World Bank;Formal Partnership
