@@ -1,13 +1,13 @@
 priority_matter;shock;code;description;value
-Economic Underperformance;Flood;3.2.3.3.1;Percentage of dwellings damaged by intense flooding (10 years);Not applicable
-Economic Underperformance;Flood;3.2.3.3.2;What level of disruptions on road traffic due to water logging does the service face?;Yellow
-Economic Underperformance;Flood;3.2.3.3.3;What level of disruption of access to public services due to water logging does the service face? [+];Green
-Economic Underperformance;Water-borne diseases;5.2.2.3;Presence of notification mechanism on communicable disease occurrence or outbreaks;Green
-Economic Underperformance;Water-borne diseases;5.2.2.4;Existence of early warning and rapid alert systems in case of diseases outbreak;Yellow
-Economic Underperformance;Water-borne diseases;5.2.2.5;Existence of awareness-raising activities as means of prevention and control of communicable diseases;Yellow
-Economic Underperformance;Water-borne diseases;6.3.2.1.3;Do local or national early warning systems for disease control exist (e.g. Ebola outbreak)?;Green
-Economic Underperformance;Water-borne diseases;6.3.2.1.4;Are there protocolos in place for monitoring infectious diseases;Green
-Economic Underperformance;Water-borne diseases;6.3.2.3.1;What level of disruption is faced in the healthcare system?;Orange
-Economic Underperformance;Infrastructure Failure;1.2.2.1;Percentage of homes with inadequate structure;Red
-Economic Underperformance;Infrastructure Failure;1.2.2.2;Percentage of critical infrastructures with inadequate structure;Green
-Economic Underperformance;Infrastructure Failure;1.2.1.1;Percentage of urban footprint located in hazardous areas;Green
+Economic Underperformance;Pluvial Flood;3.2.3.3.1;Percentage of dwellings damaged by intense flooding (10 years);Not applicable
+Economic Underperformance;Pluvial Flood;3.2.3.3.2;What level of disruptions on road traffic due to water logging does the service face?;Yellow
+Economic Underperformance;Pluvial Flood;3.2.3.3.3;What level of disruption of access to public services due to water logging does the service face? [+];Green
+Economic Underperformance;Viral Epidemic & Pandemic Disease;5.2.2.3;Presence of notification mechanism on communicable disease occurrence or outbreaks;Green
+Economic Underperformance;Viral Epidemic & Pandemic Disease;5.2.2.4;Existence of early warning and rapid alert systems in case of diseases outbreak;Yellow
+Economic Underperformance;Viral Epidemic & Pandemic Disease;5.2.2.5;Existence of awareness-raising activities as means of prevention and control of communicable diseases;Yellow
+Economic Underperformance;Viral Epidemic & Pandemic Disease;6.3.2.1.3;Do local or national early warning systems for disease control exist (e.g. Ebola outbreak)?;Green
+Economic Underperformance;Viral Epidemic & Pandemic Disease;6.3.2.1.4;Are there protocolos in place for monitoring infectious diseases;Green
+Economic Underperformance;Viral Epidemic & Pandemic Disease;6.3.2.3.1;What level of disruption is faced in the healthcare system?;Orange
+Economic Underperformance;Built Infrastructure Breakdown;1.2.2.1;Percentage of homes with inadequate structure;Red
+Economic Underperformance;Built Infrastructure Breakdown;1.2.2.2;Percentage of critical infrastructures with inadequate structure;Green
+Economic Underperformance;Built Infrastructure Breakdown;1.2.1.1;Percentage of urban footprint located in hazardous areas;Green
