@@ -1,5 +1,6 @@
 
 /* In this line, put //* for notebook, and put only /* for local execution
+// Use the naming convention for CSV data relations: 'csv_file_ENTITYTYPE'
 def config_components[:data] = csv_file_components
 def config_economic_underperformance_indicators_teresina[:data] = csv_file_economic_underperformance_indicators_teresina
 def config_elements[:data] = csv_file_elements
