@@ -1,0 +1,34 @@
+entity ShockImpact row_to_shock_impact = row_from[teresina_shocks_csv]
+def shock_impact_row = transpose[row_to_shock_impact]
+def shock_impact = cell_from[shock_impact_row, teresina_shocks_csv]
+// Similarly, here could be added shock occurrences from other locations as well
+// by employing the pattern shown in lines 1-3
+
+def shock_impact_id = shock_impact:id
+def shock_impact_subtype(s, st) = 
+    shock_impact:subtype(s, stn) and 
+    st = from_shock_subtype_name[stn] 
+    from stn
+def shock_impact_type(s, t) =
+    shock_impact_subtype(s, st) and 
+    shock_subtype_belongs_to_shock_type(st, t)
+    from st
+def shock_impact_group(s, g) =
+    shock_impact_type(s, t) and 
+    shock_type_belongs_to_shock_group(t, g)
+    from t
+
+def shock_impact_date = shock_impact:date
+def shock_impact_people_directly_affected = shock_impact:people_directly_affected
+def shock_impact_people_indirectly_affected = shock_impact:people_indirectly_affected
+def shock_impact_caused_shock = shock_impact:triggered_shock
+def shock_impact_caused_by_shock = transpose[shock_impact_caused_shock] 
+def shock_impact_affected_urban_elements = shock_impact:urban_elements
+def shock_impact_number_of_casualties = shock_impact:casualties
+def shock_impact_number_of_injured = shock_impact:injured
+def shock_impact_number_of_displaced = shock_impact:displaced
+def shock_impact_loss_of_working_days = shock_impact:loss_of_working_days
+def shock_impact_loss_of_jobs = shock_impact:loss_of_jobs
+
+// TODO add IC to check consistency of group-type-subtype wrt. the structure we 
+// already have

@@ -17,7 +17,7 @@ function install_rel(conn)
         SourceFile(src_root * "/stressor_type_given.rel"),
         SourceFile(src_root * "/urban_element_given.rel"),
         SourceFile(src_root * "/shock_classifiers_given.rel"),
-        SourceFile(src_root * "/shock_occurrence_given.rel"),
+        SourceFile(src_root * "/shock_impact_given.rel"),
     ]
 
     println("Installing Rel Files...")
