@@ -1,0 +1,32 @@
+/* 
+ * Establish relationships between stresses and specific indicators
+ */
+
+// Relation to capture the connection added to stress_type_given.rel
+// def indicator_stress = 
+//     indicator_prioritymatter . 
+//     prioritymatter_stress_type
+
+// Example query:
+((transpose[indicator_code])["1.2.2.2"]) . indicator_stress . (transpose[stress_type_from_name])
+
+
+/*
+ * Which Priority Matters should be prioritized for action? (the ones having the worst impacts or worst projections).
+ */
+
+// Example query: get priority matters with at least one Red indicator
+pm_n: indicator_prioritymatter(i, pm) and indicator_value(i, "Red") and prioritymatter_from_name(pm_n, pm) from pm, i
+
+
+
+/* 
+ * Which Shocks are causing more impact?
+ */
+
+// Get count for shock in a priority matter
+p_n, c : c = count[s: shock_subtype_prioritymatter(s, p)] and prioritymatter_from_name(p_n, p) from p
+
+// Get count for priority matters that are impacted by shock
+s_n, c : c = count[p: shock_subtype_prioritymatter(s, p)] and from_shock_subtype_name(s_n, s) from s
+

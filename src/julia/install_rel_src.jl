@@ -10,6 +10,7 @@ function install_rel(conn)
 
         SourceFile(src_root * "/input.rel"),
         SourceFile(src_root * "/component_type_given.rel"),
+        SourceFile(src_root * "/indicator_given.rel"),
         SourceFile(src_root * "/organization_given.rel"),
         SourceFile(src_root * "/ppi_given.rel"),
         SourceFile(src_root * "/prioritymatter_type_given.rel"),

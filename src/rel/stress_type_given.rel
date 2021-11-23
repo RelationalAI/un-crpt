@@ -12,3 +12,5 @@ def stress_type_prioritymatter(st, pm) =
     st = stress_type_from_name[st_n]
     from pm_n, r, st_n
 def prioritymatter_stress_type = transpose[stress_type_prioritymatter]
+
+def indicator_stress = indicator_prioritymatter . prioritymatter_stress_type

@@ -1,0 +1,13 @@
+// TODO Once we start focusing on multiple cities, file indices shall be used 
+entity Indicator row_to_indicator = row_from[teresina_urbanunderperformance_shocks_indicators_csv]
+def indicator_row = transpose[row_to_indicator]
+def indicator = cell_from[indicator_row, teresina_urbanunderperformance_shocks_indicators_csv]
+// TODO Once we start focusing on multiple cities, this rule needs to be refined
+def indicator = :city, Indicator, "Teresina"
+
+def indicator_city = indicator:city
+def indicator_prioritymatter = indicator:priority_matter . prioritymatter_from_name
+def indicator_shock_subtype = indicator:shock . from_shock_subtype_name
+def indicator_code = indicator:code
+def indicator_description = indicator:description
+def indicator_value = indicator:value
