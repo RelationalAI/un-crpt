@@ -30,3 +30,9 @@ p_n, c : c = count[s: shock_subtype_prioritymatter(s, p)] and prioritymatter_fro
 // Get count for priority matters that are impacted by shock
 s_n, c : c = count[p: shock_subtype_prioritymatter(s, p)] and from_shock_subtype_name(s_n, s) from s
 
+/*
+ * Additional example (not from Miquel's email)
+ */
+
+// Get the number of people diretly affected by shock type "Viral Epidemic & Pandemic Disease"
+st_n, nr_aff : st_n = "Viral Epidemic & Pandemic Disease" and st = from_shock_subtype_name[st_n] and shock_impact_subtype(s, st) and shock_impact_people_indirectly_affected(s, nr_aff) from st, s
