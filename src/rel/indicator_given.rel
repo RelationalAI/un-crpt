@@ -6,7 +6,7 @@ def indicator = cell_from[indicator_row, teresina_urbanunderperformance_shocks_i
 def indicator = :city, Indicator, "Teresina"
 
 def indicator_city = indicator:city
-def indicator_prioritymatter = indicator:priority_matter . prioritymatter_from_name
+def indicator_prioritymatter = indicator:priority_matter . priority_matter_name_prioritymatter
 def indicator_shock_subtype = indicator:shock . from_shock_subtype_name
 def indicator_code = indicator:code
 def indicator_description = indicator:description

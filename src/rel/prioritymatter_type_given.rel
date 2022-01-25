@@ -1,12 +1,12 @@
-// TODO once data is available, replace these constructors with master entity-style
-// entity creation
-entity PriorityMatter prioritymatter_from_name = stresses_prioritymatters_csv[:priority_matter, _]
-entity PriorityMatter prioritymatter_from_name = shocks_prioritymatters_csv[:priority_matter, _]
+entity PriorityMatter row_to_prioritymatter = row_from[priority_matters_csv]
+def prioritymatter_row = transpose[row_to_prioritymatter]
+def prioritymatter = cell_from[prioritymatter_row, priority_matters_csv]
 
 def prioritymatter_shock_subtype(pm, sh) =  
     shocks_prioritymatters_csv(:priority_matter, r, pm_n) and 
     shocks_prioritymatters_csv(:shock, r, sh_n) and 
-    pm = prioritymatter_from_name[pm_n] and
+    prioritymatter:priority_matter(pm, pm_n) and
     sh = from_shock_subtype_name[sh_n]
     from pm_n, sh_n, r
 def shock_subtype_prioritymatter = transpose[prioritymatter_shock_subtype]
+def priority_matter_name_prioritymatter = transpose[prioritymatter:priority_matter]
