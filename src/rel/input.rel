@@ -1,5 +1,4 @@
 
-/* In this line, put //* for notebook, and put only /* for local execution
 // Use the naming convention for CSV data relations: 'csv_file_ENTITYTYPE'
 def config_components[:data] = csv_file_components
 def config_economic_underperformance_indicators_teresina[:data] = csv_file_economic_underperformance_indicators_teresina
@@ -15,24 +14,6 @@ def config_teresina_urbanunderperformance_shocks_indicators[:data] = csv_file_te
 def config_teresina_urbanunderperformance_stresses_indicators[:data] = csv_file_teresina_urbanunderperformance_stresses_indicators
 def config_urbanunderperformance_stakeholders[:data] = csv_file_urbanunderperformance_stakeholders
 def config_priority_matters[:data] = csv_file_priority_matters
-/*/
-// TODO: replace path prefix "/Users/mbur/git/un-crpt" with the root of the 
-// un-crpt repository when running locally
-def config_components[:path] = "/Users/mbur/git/un-crpt/data/components.csv"
-def config_economic_underperformance_indicators_teresina[:path] = "/Users/mbur/git/un-crpt/data/economic_underperformance_indicators_teresina.csv"
-def config_elements[:path] = "/Users/mbur/git/un-crpt/data/elements.csv"
-def config_ppi[:path] = "/Users/mbur/git/un-crpt/data/ppi.csv"
-def config_shocks_prioritymatters[:path] = "/Users/mbur/git/un-crpt/data/shocks_prioritymatters.csv"
-def config_stakeholders_description[:path] = "/Users/mbur/git/un-crpt/data/stakeholders_description.csv"
-def config_stresses_prioritymatters[:path] = "/Users/mbur/git/un-crpt/data/stresses_prioritymatters.csv"
-def config_stresses_urbanelements[:path] = "/Users/mbur/git/un-crpt/data/stresses_urbanelements.csv"
-def config_stressors_stresses[:path] = "/Users/mbur/git/un-crpt/data/stressors_stresses.csv"
-def config_teresina_shocks[:path] = "/Users/mbur/git/un-crpt/data/teresina_shocks.csv"
-def config_teresina_urbanunderperformance_shocks_indicators[:path] = "/Users/mbur/git/un-crpt/data/teresina_urbanunderperformance_shocks_indicators.csv"
-def config_teresina_urbanunderperformance_stresses_indicators[:path] = "/Users/mbur/git/un-crpt/data/teresina_urbanunderperformance_stresses_indicators.csv"
-def config_urbanunderperformance_stakeholders[:path] = "/Users/mbur/git/un-crpt/data/urbanunderperformance_stakeholders.csv"
-def config_priority_matters[:path] = "/Users/mbur/git/un-crpt/data/priority_matters.csv"
-//*/
 
 def config_components[:schema, :code] = "string"
 def config_components[:schema, :name] = "string"
