@@ -1,0 +1,13 @@
+city;priority_matter;shock;element_code;component_code;indicator_code;indicator_description;indicator_value
+teresina;Economic Underperformance;Pluvial Flood;3;3.2.3;3.2.3.3.1;Percentage of dwellings damaged by intense flooding (10 years);Not applicable
+teresina;Economic Underperformance;Pluvial Flood;3;3.2.3;3.2.3.3.2;What level of disruptions on road traffic due to water logging does the service face?;Yellow
+teresina;Economic Underperformance;Pluvial Flood;3;3.2.3;3.2.3.3.3;What level of disruption of access to public services due to water logging does the service face? [+];Green
+teresina;Economic Underperformance;Viral Epidemic & Pandemic Disease;5;5.2;5.2.2.3;Presence of notification mechanism on communicable disease occurrence or outbreaks;Green
+teresina;Economic Underperformance;Viral Epidemic & Pandemic Disease;5;5.2;5.2.2.4;Existence of early warning and rapid alert systems in case of diseases outbreak;Yellow
+teresina;Economic Underperformance;Viral Epidemic & Pandemic Disease;5;5.2;5.2.2.5;Existence of awareness-raising activities as means of prevention and control of communicable diseases;Yellow
+teresina;Economic Underperformance;Viral Epidemic & Pandemic Disease;6;6.3.2;6.3.2.1.3;Do local or national early warning systems for disease control exist (e.g. Ebola outbreak)?;Green
+teresina;Economic Underperformance;Viral Epidemic & Pandemic Disease;6;6.3.2;6.3.2.1.4;Are there protocols in place for monitoring infectious diseases;Green
+teresina;Economic Underperformance;Viral Epidemic & Pandemic Disease;6;6.3.2;6.3.2.3.1;What level of disruption is faced in the healthcare system?;Orange
+teresina;Economic Underperformance;Built Infrastructure Breakdown;1;1.2;1.2.2.1;Percentage of homes with inadequate structure;Red
+teresina;Economic Underperformance;Built Infrastructure Breakdown;1;1.2;1.2.2.2;Percentage of critical infrastructures with inadequate structure;Green
+teresina;Economic Underperformance;Built Infrastructure Breakdown;1;1.2;1.2.1.1;Percentage of urban footprint located in hazardous areas;Green

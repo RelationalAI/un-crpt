@@ -1,0 +1,49 @@
+city;element_code;component_code;component_name
+teresina;1;1.1;Urban Form
+teresina;1;1.2;Land Tenure
+teresina;1;1.3;Housing
+teresina;1;1.4;Built Assets
+teresina;2;2.1;Water Resources
+teresina;2;2.2;Energy Resources
+teresina;2;2.3;Food Supply Chain
+teresina;2;2.4;Urban Logistics
+teresina;3;3.1;Energy
+teresina;3;3.2;Water
+teresina;3;3.3;Solid Waste
+teresina;3;3.4;Telecommunications
+teresina;4;4.1;Urban Mobility
+teresina;4;4.2;Inter-regional Mobility
+teresina;5;5.1;Cemeteries and Crematoriums
+teresina;5;5.2;Civil Registration Services
+teresina;5;5.3;Criminal Justice and Law Enforcement
+teresina;5;5.4;Cultural Heritage and Cultural Activities
+teresina;5;5.5;Emergency and rescue services
+teresina;5;5.6;Food Inspection and Monitor
+teresina;5;5.7;Diseases Surveillance and Response System
+teresina;5;5.8;Municipal Taxes
+teresina;5;5.9;Public Lighting
+teresina;6;6.1;Social Accountability
+teresina;6;6.2;Access to social protection floor for all
+teresina;6;6.3;Access to Basic Social Services
+teresina;7;7.1;Local Economic Structure
+teresina;7;7.2;Fiscal Stability and Municipal Finance
+teresina;7;7.3;Market Connectivity
+teresina;8;8.1;Ecosystem Services
+teresina;8;8.2;Ecological Footprint
+teresina;8;8.3;Biodiversity & Green Infrastructure
+teresina;8;8.4;Environmental Quality
+teresina;3;3.1.1;Energy Supply - Buildings
+teresina;3;3.1.2;Energy Supply - Mobility
+teresina;3;3.2.1;Water Supply
+teresina;3;3.2.2;Wastewater and Sanitation
+teresina;3;3.2.3;Stormwater
+teresina;3;3.4.1;Phone & Internet
+teresina;3;3.4.2;TV & Radio
+teresina;5;5.3.1;Violence and Insecurity
+teresina;5;5.3.2;Law Enforcement
+teresina;5;5.3.3;Detention Facilities
+teresina;5;5.3.4;Justice Institution
+teresina;6;6.3.1;Education
+teresina;6;6.3.2;Health
+teresina;6;6.3.3;Social Care
+teresina;6;6.3.4;Food

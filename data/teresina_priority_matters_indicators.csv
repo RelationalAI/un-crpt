@@ -1,0 +1,27 @@
+city;priority_matter;element_code;component_code;indicator_code;indicator_description;indicator_value
+teresina;Economic Underperformance;7;7.1;7.1.1.1;Industrial diversity using composition by city product sector shares;Red
+teresina;Economic Underperformance;7;7.1;7.1.1.2;Gross City Product (GCP) and GCP per capita for the past 10 years;Green
+teresina;Economic Underperformance;7;7.1;7.1.2.2;Total number of business establishments per square kilometre;Orange
+teresina;Economic Underperformance;7;7.1;7.1.2.3;Proportion of total businesses that can be classified as informal (by sector if possible);Red
+teresina;Economic Underperformance;7;7.1;7.1.3.1;Diversity index for local employment using local employment composition by sector;Yellow
+teresina;Economic Underperformance;7;7.1;7.1.3.2;Unemployment rate (disaggregate by sex, education, and age, if possible) -;Red
+teresina;Economic Underperformance;7;7.1;7.1.3.3;Informal employment rate (Please disaggregate by sex and vulnerable groups, if possible);Red
+teresina;Economic Underperformance;7;7.1;7.1.3.6;Are worker training and retraining programs available for city inhabitants?;Green
+teresina;Economic Underperformance;7;7.1;7.1.4.2;Proportion of the households below the poverty line (disaggregate by sex of householder, if possible)?;Red
+teresina;Economic Underperformance;7;7.1;7.1.4.3;Provide GINI Coefficient at the local level the last year available;Red
+teresina;Economic Underperformance;7;7.2;7.2.1.2;Proportion of total local government revenue that is own-source;Red
+teresina;Economic Underperformance;7;7.2;7.2.1.3;Trends in own-source revenue (last 5 years);Green
+teresina;Economic Underperformance;7;7.2;7.2.2.3;Existence of performance indicators and goals for tracking budget execution;Qualitative
+teresina;Economic Underperformance;7;7.2;7.3.1.2;Commercial banks per 100 000 inhabitants;Red
+teresina;Economic Underperformance;7;7.3;7.3.2.1;National Business Freedom measure according to the Index of Economic Freedom;Red
+teresina;Economic Underperformance;7;7.3;7.3.2.1.1;Trade Freedom measure;Red
+teresina;Economic Underperformance;7;7.3;7.3.2.3;Currency volatility over the past decade;Red
+teresina;Economic Underperformance;7;7.3;7.3.2.4;Largest cities located between 200 and 500 km that have greater than 150,000 inhabitants;Green
+teresina;Economic Underperformance;4;4.1;4.1.1.1.1;Percentage of commuting trips - Private modes (Please disaggregate by sex, if possible) and select their relevant growth rate.;Green
+teresina;Economic Underperformance;4;4.1;4.1.1.1.2;Percentage of commuting trips - Public modes (Please disaggregate by sex, if possible) and select their relevant growth rate.;Red
+teresina;Economic Underperformance;4;4.1;4.1.1.1.3;Percentage of commuting trips - Sustainable modes (Please disaggregate by sex, if possible) and select their relevant growth rate.;Green
+teresina;Economic Underperformance;4;4.1;4.1.1.2;Percentage of population using paratransit modes of transportation (Please disaggregate by sex, if possible);Qualitative
+teresina;Economic Underperformance;4;4.1;4.1.3.5.1;Average commuting travel time - Private modes;Orange
+teresina;Economic Underperformance;4;4.1;4.1.3.5.2;Average commuting travel time - Public modes;Green
+teresina;Economic Underperformance;4;4.1;4.1.3.5.3;Average commuting travel time - Sustainable modes;Green
+teresina;Economic Underperformance;4;4.1;4.1.4.4;What is the average travel speed on major thoroughfares during peak hours?;Orange

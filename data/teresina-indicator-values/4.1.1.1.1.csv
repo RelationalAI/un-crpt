@@ -1,0 +1,24 @@
+;;Within the local area;;;;Within the functional/ metropolitan area;;;
+;;Male;Female;Total;Growth rate;Male;Female;Total;Growth rate
+Private modes;;;;28;;;;;
+Vehicles;Car;;;22,242811;Stable decrease;;;;
+;Motorcycles;;;5,186596368;Sharp increase;;;;
+Light vessels;;;;;;;;;
+Taxi;;;;0,405319907;Stable increase;;;;
+Other;Trucks;;;0,165223438;Stable increase;;;;
+;Others;;;;;;;;
+Public modes;;;;26;;;;;
+Bus;;;;24,65373456;Sharp increase;;;;
+Railway;Train;;;;;;;;
+;Tram;;;;;;;;
+;Metro;;;0,042780388;Stable increase;;;;
+Light vessels;;;;;;;;;
+Cable;;;;;;;;;
+Other;Van ;;;0,333581681;Stable increase;;;;
+;School Transport;;;0,656570681;;;;;
+;Freight Transport;;;0,313391211;;;;;
+Sustainable modes;;;;46;;;;;
+Bicycle;Private;;;12,19889187;Stable increase;;;;
+;Public;;;0;;;;;
+Walking;;;;33,80116521;Stable increase;;;;
+Other;;;;;;;;;

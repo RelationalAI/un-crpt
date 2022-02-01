@@ -1,0 +1,46 @@
+city;organization_1;organization_2;relationship_role
+teresina;SEMPLAN;FIEPI;Communicates
+teresina;SEMPLAN;AFD;Formal Partnership
+teresina;SEMPLAN;World Bank;Formal Partnership
+teresina;SEMPLAN;CAF;Formal Partnership
+teresina;SEMPLAN;Ministerio da Economia;Legally Engages
+teresina;SEMPLAN;NBD;Formal Partnership
+teresina;SEMPLAN;BNDES;Formal Partnership
+teresina;SEMPLAN;Caixa Economica;Formal Partnership
+teresina;SEMPLAN;MDR;Legally Engages
+teresina;SEMPLAN;Banco do Brasil;Formal Partnership
+teresina;SEMPLAN;UESPI;Communicates
+teresina;SEMPLAN;SEMDUH;Formal Partnership
+teresina;SEMPLAN;SEMEST;Formal Partnership
+teresina;SEMDUH;SINDUSCON;Formal Partnership
+teresina;SEMDUH;SEMDEC;Formal Partnership
+teresina;SEMDUH;World Bank;Communicates
+teresina;SEMDUH;SEMPLAN;Formal Partnership
+teresina;CDL;Ministerio da Economia;Communicates
+teresina;CDL;SEMDEC;Formal Partnership
+teresina;CDL;SEMEST;Formal Partnership
+teresina;SEMEST;SEBRAE;Formal Partnership
+teresina;SEMEST;CDL;Formal Partnership
+teresina;SEMEST;UFPI;Formal Partnership
+teresina;SEMEST;UESPI;Formal Partnership
+teresina;SEMEST;IFPI;Formal Partnership
+teresina;SEMEST;SEMPLAN;Formal Partnership
+teresina;SEMDEC;SINDCOM;Formal Partnership
+teresina;SEMDEC;MOVE-PI;Formal Partnership
+teresina;SEMDEC;Banco do Brasil;Formal Partnership
+teresina;SEMDEC;UFPI;Formal Partnership
+teresina;SEMDEC;UESPI;Communicates
+teresina;SEMDEC;IFPI;Formal Partnership
+teresina;SEMDEC;SEBRAE;Formal Partnership
+teresina;SEMDEC;CDL;Formal Partnership
+teresina;SEBRAE;IFPI;Formal Partnership
+teresina;SEBRAE;UFPI;Formal Partnership
+teresina;SEBRAE;SEMEST;Formal Partnership
+teresina;SEBRAE;UESPI;Formal Partnership
+teresina;FIEPI;SEMPLAN;Communicates
+teresina;FIEPI;SINDUSCON;Formal Partnership
+teresina;Caixa Economica;SEMPLAN;Formal Partnership
+teresina;Caixa Economica;MDR;Formal Partnership
+teresina;Caixa Economica;World Bank;Formal Partnership
+teresina;IFPI;UFPI;Formal Partnership
+teresina;IFPI;SEBRAE;Formal Partnership
