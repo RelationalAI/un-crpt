@@ -2,6 +2,10 @@ entity PriorityMatter row_to_prioritymatter = row_from[priority_matters_csv]
 def prioritymatter_row = transpose[row_to_prioritymatter]
 def prioritymatter = cell_from[prioritymatter_row, priority_matters_csv]
 
+
+def prioritymatter_city = prioritymatter:city
+def prioritymatter_name = prioritymatter:priority_matter
+
 def prioritymatter_shock_subtype(pm, sh) =  
     shocks_prioritymatters_csv(:priority_matter, r, pm_n) and 
     shocks_prioritymatters_csv(:shock, r, sh_n) and 
