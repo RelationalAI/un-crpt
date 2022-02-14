@@ -1,77 +1,36 @@
-
 // Use the naming convention for CSV data relations: 'csv_file_ENTITYTYPE'
-def config_components[:data] = csv_file_components
-def config_economic_underperformance_indicators_teresina[:data] = csv_file_economic_underperformance_indicators_teresina
+// elements file definition
 def config_elements[:data] = csv_file_elements
-def config_ppi[:data] = csv_file_ppi
-def config_shocks_prioritymatters[:data] = csv_file_shocks_prioritymatters
-def config_stakeholders_description[:data] = csv_file_stakeholders_description
-def config_stresses_prioritymatters[:data] = csv_file_stresses_prioritymatters
-def config_stresses_urbanelements[:data] = csv_file_stresses_urbanelements
-def config_stressors_stresses[:data] = csv_file_stressors_stresses
-def config_teresina_shocks[:data] = csv_file_teresina_shocks
-def config_teresina_urbanunderperformance_shocks_indicators[:data] = csv_file_teresina_urbanunderperformance_shocks_indicators
-def config_teresina_urbanunderperformance_stresses_indicators[:data] = csv_file_teresina_urbanunderperformance_stresses_indicators
-def config_urbanunderperformance_stakeholders[:data] = csv_file_urbanunderperformance_stakeholders
-def config_priority_matters[:data] = csv_file_priority_matters
 
+// elements file configuration and loading
+def config_elements[:schema, :city] = "string"
+def config_elements[:schema, :element_code] = "string"
+def config_elements[:schema, :component_code] = "string"
+def config_elements[:schema, :component_name] = "string"
+def config_elements[:syntax, :delim] = ';'
+def elements_csv = load_csv[config_elements]
+
+// components file definition
+def config_components[:data] = csv_file_components
+
+// components file configuration and loading
+def config_components[:schema, :city] = "string"
+def config_components[:schema, :element_code] = "string"
 def config_components[:schema, :code] = "string"
 def config_components[:schema, :name] = "string"
 def config_components[:syntax, :delim] = ';'
 def components_csv = load_csv[config_components]
 
-def config_economic_underperformance_indicators_teresina[:schema, :code] = "string"
-def config_economic_underperformance_indicators_teresina[:schema, :description] = "string"
-def config_economic_underperformance_indicators_teresina[:schema, :value] = "string"
-def config_economic_underperformance_indicators_teresina[:syntax, :delim] = ';'
-def economic_underperformance_indicators_teresina_csv = load_csv[config_economic_underperformance_indicators_teresina]
+// shocks file definition
+def config_teresina_shocks[:data] = csv_file_shocks
 
-def config_elements[:schema, :code] = "string"
-def config_elements[:schema, :short_name] = "string"
-def config_elements[:schema, :name] = "string"
-def config_elements[:syntax, :delim] = ';'
-def elements_csv = load_csv[config_elements]
-
-def config_ppi[:schema, :type] = "string"
-def config_ppi[:schema, :description] = "string"
-def config_ppi[:schema, :year] = "int"
-def config_ppi[:schema, :status] = "string"
-def config_ppi[:schema, :category] = "string"
-def config_ppi[:schema, :url] = "string"
-def config_ppi[:syntax, :delim] = ';'
-def ppi_csv = load_csv[config_ppi]
-
-def config_shocks_prioritymatters[:schema, :shock] = "string"
-def config_shocks_prioritymatters[:schema, :priority_matter] = "string"
-def config_shocks_prioritymatters[:syntax, :delim] = ';'
-def shocks_prioritymatters_csv = load_csv[config_shocks_prioritymatters]
-
-def config_stakeholders_description[:schema, :organization] = "string"
-def config_stakeholders_description[:schema, :description] = "string"
-def config_stakeholders_description[:syntax, :delim] = ';'
-def stakeholders_description_csv = load_csv[config_stakeholders_description]
-
-def config_stresses_prioritymatters[:schema, :stress] = "string"
-def config_stresses_prioritymatters[:schema, :priority_matter] = "string"
-def config_stresses_prioritymatters[:syntax, :delim] = ';'
-def stresses_prioritymatters_csv = load_csv[config_stresses_prioritymatters]
-
-def config_stresses_urbanelements[:schema, :stress] = "string"
-def config_stresses_urbanelements[:schema, :urban_element_code] = "string"
-def config_stresses_urbanelements[:schema, :urban_element_description] = "string"
-def config_stresses_urbanelements[:syntax, :delim] = ';'
-def stresses_urbanelements_csv = load_csv[config_stresses_urbanelements]
-
-def config_stressors_stresses[:schema, :stressor] = "string"
-def config_stressors_stresses[:schema, :stress] = "string"
-def config_stressors_stresses[:syntax, :delim] = ';'
-def stressors_stresses_csv = load_csv[config_stressors_stresses]
-
+// shocks file configuration and loading
+def config_teresina_shocks[:schema, :city] = "string"
 def config_teresina_shocks[:schema, :group] = "string"
 def config_teresina_shocks[:schema, :type] = "string"
 def config_teresina_shocks[:schema, :subtype] = "string"
 // TODO: make sure dates are parsed correctly, otherwise write a transformation rule
-def config_teresina_shocks[:schema, :date] = "date"
+def config_teresina_shocks[:schema, :date] = "string"
 def config_teresina_shocks[:schema, :people_directly_affected] = "int"
 def config_teresina_shocks[:schema, :people_indirectly_affected] = "int"
 def config_teresina_shocks[:schema, :triggered_shock] = "string"
@@ -84,6 +43,120 @@ def config_teresina_shocks[:schema, :loss_of_jobs] = "int"
 def config_teresina_shocks[:syntax, :delim] = ';'
 def teresina_shocks_csv = load_csv[config_teresina_shocks]
 
+// stresses file definition
+def config_stresses[:data] = csv_file_stresses
+
+// stresses file configuration and loading
+def config_stresses[:schema, :city] = "string"
+def config_stresses[:schema, :name] = "string"
+def config_stresses[:syntax, :delim] = ';'
+def stresses_csv = load_csv[config_stresses]
+
+// stressors file definition
+def config_stressors_stresses[:data] = csv_file_stressors_stresses
+
+// stressors file configuration and loading
+def config_stressors_stresses[:schema, :city] = "string"
+def config_stressors_stresses[:schema, :stressor] = "string"
+def config_stressors_stresses[:schema, :stress] = "string"
+def config_stressors_stresses[:syntax, :delim] = ';'
+def stressors_stresses_csv = load_csv[config_stressors_stresses]
+
+// ppis file definition
+def config_ppi[:data] = csv_file_ppi
+
+// ppis file configuration and loading
+def config_ppi[:schema, :city] = "string"
+def config_ppi[:schema, :type] = "string"
+def config_ppi[:schema, :description] = "string"
+def config_ppi[:schema, :year] = "int"
+def config_ppi[:schema, :status] = "string"
+def config_ppi[:schema, :category] = "string"
+def config_ppi[:schema, :url] = "string"
+def config_ppi[:syntax, :delim] = ';'
+def ppi_csv = load_csv[config_ppi]
+
+// priority matters definition
+def config_priority_matters[:data] = csv_file_priority_matters
+
+// priority matters configuration and loading
+def config_priority_matters[:schema, :city] = "string"
+def config_priority_matters[:schema, :priority_matter] = "string"
+def config_priority_matters[:syntax, :delim] = ';'
+def priority_matters_csv = load_csv[config_priority_matters]
+
+// stakeholders file definition
+def config_stakeholders_description[:data] = csv_file_stakeholders_description
+
+// stakeholders configuration and loading
+def config_stakeholders_description[:schema, :city] = "string"
+def config_stakeholders_description[:schema, :organization] = "string"
+def config_stakeholders_description[:schema, :description] = "string"
+def config_stakeholders_description[:syntax, :delim] = ';'
+def stakeholders_description_csv = load_csv[config_stakeholders_description]
+
+// shocks priority matters file definition
+def config_shocks_prioritymatters[:data] = csv_file_shocks_prioritymatters
+
+// shocks priority matters configuration and loading
+def config_shocks_prioritymatters[:schema, :city] = "string"
+def config_shocks_prioritymatters[:schema, :shock] = "string"
+def config_shocks_prioritymatters[:schema, :priority_matter] = "string"
+def config_shocks_prioritymatters[:syntax, :delim] = ';'
+def shocks_prioritymatters_csv = load_csv[config_shocks_prioritymatters]
+
+// stresses priority matters file definition
+def config_stresses_prioritymatters[:data] = csv_file_stresses_prioritymatters
+
+// stresses priority matters configuration and loading
+def config_stresses_prioritymatters[:schema, :city] = "string"
+def config_stresses_prioritymatters[:schema, :stress] = "string"
+def config_stresses_prioritymatters[:schema, :priority_matter] = "string"
+def config_stresses_prioritymatters[:syntax, :delim] = ';'
+def stresses_prioritymatters_csv = load_csv[config_stresses_prioritymatters]
+
+// stresses elements file definition
+def config_stresses_urbanelements[:data] = csv_file_stresses_urbanelements
+
+// stresses elements file configuration and loading
+def config_stresses_urbanelements[:schema, :city] = "string"
+def config_stresses_urbanelements[:schema, :stress] = "string"
+def config_stresses_urbanelements[:schema, :urban_element_code] = "string"
+def config_stresses_urbanelements[:schema, :urban_element_description] = "string"
+def config_stresses_urbanelements[:syntax, :delim] = ';'
+def stresses_urbanelements_csv = load_csv[config_stresses_urbanelements]
+
+// priority matters stakeholders file definition
+// TODO: change name from specific urban underperformance priority matter to generic priority matter
+def config_urbanunderperformance_stakeholders[:data] = csv_file_urbanunderperformance_stakeholders
+
+// priority matters stakeholders file configuration and loading
+def config_urbanunderperformance_stakeholders[:schema, :city] = "string"
+def config_urbanunderperformance_stakeholders[:schema, :organization_1] = "string"
+def config_urbanunderperformance_stakeholders[:schema, :organization_2] = "string"
+def config_urbanunderperformance_stakeholders[:schema, :relationship_role] = "string"
+def config_urbanunderperformance_stakeholders[:syntax, :delim] = ';'
+def urbanunderperformance_stakeholders_csv = load_csv[config_urbanunderperformance_stakeholders]
+
+// priority matters - indicators file definition
+// TODO: change naming convention for more general priority  matters instead of economic underperformance
+def config_economic_underperformance_indicators_teresina[:data] = csv_file_economic_underperformance_indicators_teresina
+
+// priority matters - indicators configuration and loading
+def config_economic_underperformance_indicators_teresina[:schema, :city] = "string"
+def config_economic_underperformance_indicators_teresina[:schema, :priority_matter] = "string"
+def config_economic_underperformance_indicators_teresina[:schema, :element_code] = "string"
+def config_economic_underperformance_indicators_teresina[:schema, :component_code] = "string"
+def config_economic_underperformance_indicators_teresina[:schema, :description] = "string"
+def config_economic_underperformance_indicators_teresina[:schema, :value] = "string"
+def config_economic_underperformance_indicators_teresina[:syntax, :delim] = ';'
+def economic_underperformance_indicators_teresina_csv = load_csv[config_economic_underperformance_indicators_teresina]
+
+// priority matters - shocks - indicators file definition
+// TODO: change naming convention for more general priority matters not only urban underperformance
+def config_teresina_urbanunderperformance_shocks_indicators[:data] = csv_file_teresina_urbanunderperformance_shocks_indicators
+// priority matters - shocks - indicators file configuration and loading
+def config_teresina_urbanunderperformance_shocks_indicators[:schema, :city] = "string"
 def config_teresina_urbanunderperformance_shocks_indicators[:schema, :priority_matter] = "string"
 def config_teresina_urbanunderperformance_shocks_indicators[:schema, :shock] = "string"
 def config_teresina_urbanunderperformance_shocks_indicators[:schema, :code] = "string"
@@ -92,21 +165,22 @@ def config_teresina_urbanunderperformance_shocks_indicators[:schema, :value] = "
 def config_teresina_urbanunderperformance_shocks_indicators[:syntax, :delim] = ';'
 def teresina_urbanunderperformance_shocks_indicators_csv = load_csv[config_teresina_urbanunderperformance_shocks_indicators]
 
+// priority matter - stresses - indicators file definition
+// TODO: change naming convention for more general priority matters instead of urban underperformance
+def config_teresina_urbanunderperformance_stresses_indicators[:data] = csv_file_teresina_urbanunderperformance_stresses_indicators
+
+// priority matter - stresses - indicators file configuration and loading
+def config_teresina_urbanunderperformance_stresses_indicators[:schema, :city] = "string"
 def config_teresina_urbanunderperformance_stresses_indicators[:schema, :priority_matter] = "string"
 def config_teresina_urbanunderperformance_stresses_indicators[:schema, :stress] = "string"
 def config_teresina_urbanunderperformance_stresses_indicators[:schema, :stressor] = "string"
-def config_teresina_urbanunderperformance_stresses_indicators[:schema, :code] = "string"
-def config_teresina_urbanunderperformance_stresses_indicators[:schema, :description] = "string"
-def config_teresina_urbanunderperformance_stresses_indicators[:schema, :value] = "string"
+def 
+config_teresina_urbanunderperformance_stresses_indicators[:schema, :element_code] = "string"
+def 
+config_teresina_urbanunderperformance_stresses_indicators[:schema, :component_code] = "string"
+def 
+config_teresina_urbanunderperformance_stresses_indicators[:schema, :indicator_code] = "string"
+def config_teresina_urbanunderperformance_stresses_indicators[:schema, :indicator_description] = "string"
+def config_teresina_urbanunderperformance_stresses_indicators[:schema, :indicator_value] = "string"
 def config_teresina_urbanunderperformance_stresses_indicators[:syntax, :delim] = ';'
 def teresina_urbanunderperformance_stresses_indicators_csv = load_csv[config_teresina_urbanunderperformance_stresses_indicators]
-
-def config_urbanunderperformance_stakeholders[:schema, :organization_1] = "string"
-def config_urbanunderperformance_stakeholders[:schema, :organization_2] = "string"
-def config_urbanunderperformance_stakeholders[:schema, :relationship_role] = "string"
-def config_urbanunderperformance_stakeholders[:syntax, :delim] = ';'
-def urbanunderperformance_stakeholders_csv = load_csv[config_urbanunderperformance_stakeholders]
-
-def config_priority_matters[:schema, :priority_matter] = "string"
-def config_priority_matters[:syntax, :delim] = ';'
-def priority_matters_csv = load_csv[config_priority_matters]
