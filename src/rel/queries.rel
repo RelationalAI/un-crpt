@@ -36,3 +36,30 @@ s_n, c : c = count[p: shock_subtype_prioritymatter(s, p)] and from_shock_subtype
 
 // Get the number of people diretly affected by shock type "Viral Epidemic & Pandemic Disease"
 st_n, nr_aff : st_n = "Viral Epidemic & Pandemic Disease" and st = from_shock_subtype_name[st_n] and shock_impact_subtype(s, st) and shock_impact_people_indirectly_affected(s, nr_aff) from st, s
+
+// From here basic queries on Teresina's CSV files
+
+// basic query on elements
+def output = c0,c,n:urban_element_type_city(e,c0) and urban_element_type_code(e,c) and urban_element_type_name(e,n) from e
+
+// basic query on components
+def output = c0,ec,c,n:component_type_city(e,c0) and component_type_element_code(e, ec) and component_type_code(e,c) and component_type_name(e,n) from e
+
+// basic query on shocks
+//def output = c0, g, t, s, pda, pia, tg, ue, c, i, d, lowd, loj: shock_impact_city(c0, e) and shock_impact_group(g,e) and shock_impact_type(t,e) and shock_impact_subtype(s,e) and shock_impact_people_directly_affected(pda,e) and shock_impact_people_indirectly_affected(pia,e) and shock_impact_caused_shock(ts, e) and shock_impact_affected_urban_elements(ue,e) and shock_impact_number_of_casualties(c,e) and shock_impact_number_of_injured(i, e) and shock_impact_number_of_displaced(d,e) and shock_impact_loss_of_working_days(lowd,e) and shock_impact_loss_of_jobs(loj,e) from e
+
+// basic query on stresses
+def output = c,n:stress_type_city(e,c) and stress_type_name(e,n) from e
+
+// basic query on stressors
+stressor_type_from_name . stressor_type_stress_type .( transpose[stress_type_from_name])
+st_n, ss_n: stressor_type_from_name(st_n,st) and stressor_type_stress_type(st,ss) and (transpose[stress_type_from_name])(ss,ss_n) from ss,st
+
+// basic query on ppi
+def output = c, t, d, y, s, cat : ppi_city(ppi, c) and ppi_type(ppi, t) and ppi_description(ppi, d) and ppi_year(ppi, y) and ppi_status(ppi, s) and ppi_category(ppi, cat) from ppi 
+
+// basic query on priority mattters
+def output = c, p : prioritymatter_city(pm, c) and prioritymatter_name(pm, p) from pm
+
+// basic query on stakeholders
+def output = c, n, d : organization_city(s, c) and organization_name(s, n) and organization_description(s, d) from s
