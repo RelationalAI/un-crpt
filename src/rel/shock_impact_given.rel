@@ -18,6 +18,7 @@ def shock_impact_group(s, g) =
     shock_type_belongs_to_shock_group(t, g)
     from t
 
+def shock_impact_city = shock_impact:city
 def shock_impact_date = shock_impact:date
 def shock_impact_people_directly_affected = shock_impact:people_directly_affected
 def shock_impact_people_indirectly_affected = shock_impact:people_indirectly_affected
