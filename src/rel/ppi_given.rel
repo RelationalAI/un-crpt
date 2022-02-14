@@ -8,6 +8,7 @@ def Policy = p: ppi_type(p, "Policy")
 def Plan = p: ppi_type(p, "Plan")
 def Initiative = t: ppi_type(t, "Initiative")
 
+def ppi_city = ppi:city
 def ppi_description = ppi:description
 def ppi_year = ppi:year
 def ppi_status= ppi:status
