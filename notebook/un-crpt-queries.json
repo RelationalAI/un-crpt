@@ -1,0 +1,118 @@
+{
+  "cells": [
+    {
+      "id": "ad0b97af-4437-4d23-88e1-f385d69467ea",
+      "inputs": [
+      ],
+      "name": "",
+      "source": "/* \n * Establish relationships between stresses and specific indicators\n */\n\n// Relation to capture the connection added to stress_type_given.rel\n// def indicator_stress = \n//     indicator_prioritymatter . \n//     prioritymatter_stress_type\n\n// Example query:\n((transpose[indicator_code])[\"1.2.2.2\"]) . indicator_stress . (transpose[stress_type_from_name])\n",
+      "type": "query"
+    },
+    {
+      "id": "3b59e618-3c5f-4589-a18e-21199a691297",
+      "inputs": [
+      ],
+      "source": "/*\n * Which Priority Matters should be prioritized for action? (the ones having the worst impacts or worst projections).\n */\n\n// Example query: get priority matters with at least one Red indicator\npm_n: indicator_prioritymatter(i, pm) and indicator_value(i, \"Red\") and priority_matter_name_prioritymatter(pm_n, pm) from pm, i\n\n",
+      "type": "query"
+    },
+    {
+      "id": "81c23bd6-b6d3-4a1d-bb70-1dd648d0774c",
+      "inputs": [
+      ],
+      "name": "",
+      "source": "/* \n * Which Shocks are causing more impact?\n */\n\n// Get count for shock in a priority matter\np_n, c : c = count[s: shock_subtype_prioritymatter(s, p)] and priority_matter_name_prioritymatter(p_n, p) from p",
+      "type": "query"
+    },
+    {
+      "id": "0220d989-4fb2-4e79-bc7d-cf766e73d0ff",
+      "inputs": [
+      ],
+      "name": "",
+      "source": "// Get count for priority matters that are impacted by shock\ns_n, c : c = count[p: shock_subtype_prioritymatter(s, p)] and from_shock_subtype_name(s_n, s) from s\n",
+      "type": "query"
+    },
+    {
+      "id": "d65d2072-3cd5-44e3-9cbb-6387698f3da0",
+      "inputs": [
+      ],
+      "name": "",
+      "source": "/*\n * Additional example (not from Miquel's email)\n */\n\n// Get the number of people diretly affected by shock type \"Viral Epidemic & Pandemic Disease\"\nst_n, nr_aff : st_n = \"Viral Epidemic & Pandemic Disease\" and st = from_shock_subtype_name[st_n] and shock_impact_subtype(s, st) and shock_impact_people_indirectly_affected(s, nr_aff) from st, s",
+      "type": "query"
+    },
+    {
+      "id": "9a6badaf-e97b-4262-9621-68469ccac7ce",
+      "inputs": [
+      ],
+      "name": "",
+      "source": "// From here basic queries on Teresina's CSV files\n\n// basic query on elements\ndef output = c0, c, n : urban_element_type_city(e,c0) and urban_element_type_code(e,c) and urban_element_type_name(e,n) from e",
+      "type": "query"
+    },
+    {
+      "id": "b0159d3d-9ba6-427a-801d-47cdcc4d0eb8",
+      "inputs": [
+      ],
+      "name": "",
+      "source": "// basic query on components\ndef output = c0, ec, c, n : component_type_city(e,c0) and component_type_element_code(e, ec) and component_type_code(e,c) and component_type_name(e,n) from e",
+      "type": "query"
+    },
+    {
+      "id": "dc0942a1-de14-43e9-bc2f-c3b6e6b27d59",
+      "inputs": [
+      ],
+      "name": "",
+      "source": "// basic query on shocks\n//def output = c0, g, t, s, pda, pia, tg, ue, c, i, d, lowd, loj: shock_impact_city(c0, e) and shock_impact_group(g,e) and shock_impact_type(t,e) and shock_impact_subtype(s,e) and shock_impact_people_directly_affected(pda,e) and shock_impact_people_indirectly_affected(pia,e) and shock_impact_caused_shock(ts, e) and shock_impact_affected_urban_elements(ue,e) and shock_impact_number_of_casualties(c,e) and shock_impact_number_of_injured(i, e) and shock_impact_number_of_displaced(d,e) and shock_impact_loss_of_working_days(lowd,e) and shock_impact_loss_of_jobs(loj,e) from e\n",
+      "type": "query"
+    },
+    {
+      "id": "2ad25c60-ce7c-415d-8b53-b64275597f8a",
+      "inputs": [
+      ],
+      "name": "",
+      "source": "// basic query on stresses\ndef output = c, n : stress_type_city(e,c) and stress_type_name(e,n) from e",
+      "type": "query"
+    },
+    {
+      "id": "6dca981f-2c4c-4a31-8299-eb6737ac6b82",
+      "inputs": [
+      ],
+      "name": "",
+      "source": "// basic query on stressors\nstressor_type_from_name . stressor_type_stress_type . (transpose[stress_type_from_name])\n",
+      "type": "query"
+    },
+    {
+      "id": "51c335cf-58b1-4660-8cf3-ebb3099c5099",
+      "inputs": [
+      ],
+      "name": "",
+      "source": "st_n, ss_n: stressor_type_from_name(st_n,st) and stressor_type_stress_type(st,ss) and (transpose[stress_type_from_name])(ss,ss_n) from ss,st\n",
+      "type": "query"
+    },
+    {
+      "id": "17214e9d-ae9a-47f5-b7ee-54a4937e86bb",
+      "inputs": [
+      ],
+      "name": "",
+      "source": "// basic query on ppi\ndef output = c, t, d, y, s, cat : ppi_city(ppi, c) and ppi_type(ppi, t) and ppi_description(ppi, d) and ppi_year(ppi, y) and ppi_status(ppi, s) and ppi_category(ppi, cat) from ppi \n",
+      "type": "query"
+    },
+    {
+      "id": "d507a8ee-ed96-48fc-b4bc-dce545150812",
+      "inputs": [
+      ],
+      "name": "",
+      "source": "// basic query on priority mattters\ndef output = c, p : prioritymatter_city(pm, c) and prioritymatter_name(pm, p) from pm\n",
+      "type": "query"
+    },
+    {
+      "id": "1509e6a1-597a-49fb-a161-3d0232a0adea",
+      "inputs": [
+      ],
+      "name": "",
+      "source": "// basic query on stakeholders\ndef output = c, n, d : organization_city(s, c) and organization_name(s, n) and organization_description(s, d) from s\n",
+      "type": "query"
+    }
+  ],
+  "metadata": {
+    "notebookFormatVersion": "0.0.1"
+  }
+}
