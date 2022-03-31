@@ -110,6 +110,78 @@
       "name": "",
       "source": "// basic query on stakeholders\ndef output = c, n, d : organization_city(s, c) and organization_name(s, n) and organization_description(s, d) from s\n",
       "type": "query"
+    },
+    {
+      "id": "f0ab8734-e2c5-45e4-bccc-6ece39e5be2a",
+      "inputs": [
+      ],
+      "name": "",
+      "source": "// 1.a\n\ndef floods = stn, dt: from_shock_type_name(stn, st) and \n(((transpose[shock_subtype_belongs_to_shock_type]) . \n  (transpose[shock_impact_subtype]) . \n  shock_impact_date)(st, dt)) \nand stn = \"FLOOD\"\nfrom st\n\ndef output = count[floods[_]]\n",
+      "type": "query"
+    },
+    {
+      "id": "16b22305-7ca3-49b1-bd07-9fa46020660f",
+      "inputs": [
+      ],
+      "name": "",
+      "source": "// 1.b\n\n// Get the number of people directly affected by shock type \"Viral Epidemic & Pandemic Disease\"\ndef loss_of_working_days = s, lowd : st_n = \"FLOOD\" and \n  st = from_shock_type_name[st_n] and \n  shock_subtype_belongs_to_shock_type(sst, st) and \n  shock_impact_subtype(s, sst) and \n  shock_impact_loss_of_working_days(s, lowd) \n  from sst, st, st_n\n\ndef output = sum[loss_of_working_days]\n\n",
+      "type": "query"
+    },
+    {
+      "id": "cdf89392-65f3-46c8-9647-8d5644a0e949",
+      "inputs": [
+      ],
+      "name": "",
+      "source": "// 1.c\n\n// Get the number of people directly affected by shock type \"FLOOD\"\ndef nr_of_people_driectly_affected = st_n, nr_aff : st_n = \"FLOOD\" and \n  st = from_shock_type_name[st_n] and \n  shock_subtype_belongs_to_shock_type(sst, st) and \n  shock_impact_subtype(s, sst) and \n  shock_impact_people_directly_affected(s, nr_aff) \n  from sst, st, s\n\ndef output = sum[nr_of_people_driectly_affected[_]]",
+      "type": "query"
+    },
+    {
+      "id": "64325fdc-17ab-4dfe-ba99-e5292949803b",
+      "inputs": [
+      ],
+      "name": "",
+      "source": "// 1.d \n\nst_n, tr_sst_n:\n  shock_impact_caused_shock(s, tr_sst_n) and\n  st_n = \"FLOOD\" and \n  st = from_shock_type_name[st_n] and \n  shock_subtype_belongs_to_shock_type(sst, st) and \n  shock_impact_subtype(s, sst)\n  from s, st, sst, tr_sst",
+      "type": "query"
+    },
+    {
+      "id": "914d3910-2b2d-46bb-84d3-20ea34f66901",
+      "inputs": [
+      ],
+      "name": "",
+      "source": "// 1.e\n\nst_n, ue:\n  st_n = \"FLOOD\" and \n  st = from_shock_type_name[st_n] and \n  shock_subtype_belongs_to_shock_type(sst, st) and \n  shock_impact_subtype(s, sst) and\n  shock_impact_affected_urban_elements(s, ue)\n  from s, st, sst",
+      "type": "query"
+    },
+    {
+      "id": "3626db64-ec9e-4118-a1e4-6e8ffad03e06",
+      "inputs": [
+      ],
+      "name": "",
+      "source": "// 2.\n\ni_c, i_v:\n  indicator_code(i, i_c) and\n  indicator_value(i, i_v) and\n  indicator_prioritymatter(i, pm) and \n  prioritymatter:priority_matter(pm, \"Economic Underperformance\") from pm, i\n",
+      "type": "query"
+    },
+    {
+      "id": "8cb5b9f2-e250-4f2c-9940-bcf5ccb78c59",
+      "inputs": [
+      ],
+      "name": "",
+      "source": "// 3.\n// List the indicators with Red value for triggered shocks by flooding\n\n// Query from 1.d\ndef shocks_triggered_by_shock_type = st_n, tr_sst_n:\n  shock_impact_caused_shock(s, tr_sst_n) and\n  st = from_shock_type_name[st_n] and \n  shock_subtype_belongs_to_shock_type(sst, st) and \n  shock_impact_subtype(s, sst)\n  from s, st, sst, tr_sst\n\ndef output = i_c, i_d, i_v, sst_n:\n  indicator_code(i, i_c) and\n  indicator_value(i, i_v) and\n  i_v = \"Red\" and\n  indicator_description(i, i_d) and\n  indicator_shock_subtype(i, sst) and \n  from_shock_subtype_name(sst_n, sst) and\n  sst_n = shocks_triggered_by_shock_type[\"FLOOD\"]\n  from i, sst",
+      "type": "query"
+    },
+    {
+      "id": "cbb182ad-5981-4b55-9ee5-23de27da563a",
+      "inputs": [
+      ],
+      "name": "",
+      "source": "// 4.\n// Same as above, but with elements\n\n// Query from 1.d\ndef shocks_triggered_by_shock_type = st_n, tr_sst_n:\n  shock_impact_caused_shock(s, tr_sst_n) and\n  st = from_shock_type_name[st_n] and \n  shock_subtype_belongs_to_shock_type(sst, st) and \n  shock_impact_subtype(s, sst)\n  from s, st, sst, tr_sst\n\ndef output = e, sst_n:\n  from_shock_subtype_name(sst_n, sst) and\n  sst_n = shocks_triggered_by_shock_type[\"FLOOD\"] and\n  shock_impact_subtype(s, sst) and\n  shock_impact_affected_urban_elements(s, e)\n  from sst, s",
+      "type": "query"
+    },
+    {
+      "id": "14f52635-c854-43ed-afe2-5bec15fd6716",
+      "inputs": [
+      ],
+      "name": "",
+      "source": "// 5.a and b\n// Get the stresses that impact the same urban elements that are impacted by the shock\n// And do the same thing with the stresses triggered by the shock (FLOOD)\n",
+      "type": "query"
     }
   ],
   "metadata": {
