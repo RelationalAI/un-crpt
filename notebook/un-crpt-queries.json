@@ -6,13 +6,14 @@
       ],
       "isCodeFolded": true,
       "name": "",
-      "source": "# City Resilience Profiling Tool\n\n## Types of Questions\n_... that our tool should be able to answer_\n\n* What are the highest risks (i.e. that cause most impact)?\n* Which elements and components of the city are affected by floods?\n* What are the indicators (i.e. data) relate to the elements affected by floods?\n* What are alternatives that would change the risks (i.e. counterfactuals)?\n* What is the relationship between shocks (chain of events)\n* What are the 2nd or 3rd level effects of a flood?\n\nOntology:\n\n![https://drive.google.com/uc?export=download&id=1CSUIXswH4le2zXR8OjhAMw1iUd-Nann9](https://drive.google.com/uc?export=download&id=1CSUIXswH4le2zXR8OjhAMw1iUd-Nann9)",
+      "source": "# City Resilience Profiling Tool\n\n## Types of Questions\n_... that our tool should be able to answer_\n\n* What are the highest risks (i.e. that cause most impact)?\n* Which elements and components of the city are affected by floods?\n* What are the indicators (i.e. data) relate to the elements affected by floods?\n* What are alternatives that would change the risks (i.e. counterfactuals)?\n* What is the relationship between shocks (chain of events)\n* What are the 2nd or 3rd level effects of a flood?\n\n## Ontology\n\n![https://drive.google.com/uc?export=download&id=1CSUIXswH4le2zXR8OjhAMw1iUd-Nann9](https://drive.google.com/uc?export=download&id=1CSUIXswH4le2zXR8OjhAMw1iUd-Nann9)\n\n## Use Case from a real city\n\n* Flooding is a well known problem in the city.\n* Around 50% of indicators collected.\n* Some data on historical significant shock impacts.\n* Interest of the city is economy.\n* Following the interest of the city, first assessment would focus on 18 economy indicators and 8 mobility indicators as the base for providing recommendations for action.\n\nAdditional analysis using the knowledge graph:\n\n* Impact of flooding showing relevance over the economy of the city\n* Impact of shocks triggered by flood \n* Impact of all these shocks over all the urban elements\n",
       "type": "markdown"
     },
     {
       "id": "077ad541-0caf-48d5-b66c-f43eb2864b8f",
       "inputs": [
       ],
+      "isCodeFolded": false,
       "name": "un-crpt-queries-shock_type_name_to_shock_impact_name_and_date",
       "source": "// 1.a\n\ndef shock_type_name_to_shock_impact_name_and_date = stn, sstn, dt: \n  shock_type_name_to_shock_subtype_name(stn, sstn) and \n  shock_subtype_name_to_shock_impact(sstn, s) and\n  shock_impact_date(s, dt)\n  from s\n",
       "type": "install"
@@ -35,11 +36,19 @@
       "type": "query"
     },
     {
+      "id": "6035e297-bb97-4aff-b41d-40b74f76453b",
+      "inputs": [
+      ],
+      "name": "",
+      "source": "Impact of flooding showing relevance over the economy of the city\n\n* Occurrences of flooding over total number of shock impacts\n* Impact on people → Directly affected people\n* Direct impact on economy → Loss of working days\n* Direct impact on economy → Loss of jobs\n",
+      "type": "markdown"
+    },
+    {
       "id": "c9db22ee-6b22-4884-9d98-8a77d6ee18a6",
       "inputs": [
       ],
       "name": "un-crpt-queries-model-3",
-      "source": "// 1.b\n\ndef shock_type_name_to_shock_and_loss_of_working_days = stn, s, lowd : \n  shock_type_name_to_shock_impact(stn, s) and\n  shock_impact_loss_of_working_days(s, lowd) ",
+      "source": "def shock_type_name_to_shock_and_loss_of_working_days = stn, s, lowd : \n  shock_type_name_to_shock_impact(stn, s) and\n  shock_impact_loss_of_working_days(s, lowd) ",
       "type": "install"
     },
     {
@@ -67,6 +76,14 @@
       "type": "query"
     },
     {
+      "id": "0c6d3fc4-88b3-42ca-af7a-fe07d761f286",
+      "inputs": [
+      ],
+      "name": "",
+      "source": "Impact of shocks triggered by flood \n\n* Shocks triggered by flood: Bacterial Epidemic & Pandemic disease, Built Infrastructure Breakdown, Political Crisis, Sudden Inland Erosion \n* Which are the red indicators related to the shocks triggered by flood \n",
+      "type": "markdown"
+    },
+    {
       "id": "64325fdc-17ab-4dfe-ba99-e5292949803b",
       "inputs": [
       ],
@@ -87,7 +104,7 @@
       "inputs": [
       ],
       "name": "un-crpt-queries-model-6",
-      "source": "// 1.e\n\ndef shock_type_name_to_affected_urban_element(stn, ue) =\n  shock_type_name_to_shock_impact(stn, s) and\n  shock_impact_affected_urban_elements(s, ue)\n  from s",
+      "source": "def shock_type_name_to_affected_urban_element(stn, ue) =\n  shock_type_name_to_shock_impact(stn, s) and\n  shock_impact_affected_urban_elements(s, ue)\n  from s",
       "type": "install"
     },
     {
@@ -103,7 +120,7 @@
       "inputs": [
       ],
       "name": "un-crpt-queries-model-7",
-      "source": "// 2.\n\ndef priority_matter_to_indicator_code_and_value(pm, i_c, i_d, i_v) = \n  indicator_code(i, i_c) and\n  indicator_description(i, i_d) and\n  indicator_value(i, i_v) and\n  indicator_to_prioritymatter_name(i, pm)\n  from i\n",
+      "source": "def priority_matter_to_indicator_code_and_value(pm, i_c, i_d, i_v) = \n  indicator_code(i, i_c) and\n  indicator_description(i, i_d) and\n  indicator_value(i, i_v) and\n  indicator_to_prioritymatter_name(i, pm)\n  from i\n",
       "type": "install"
     },
     {
@@ -119,7 +136,7 @@
       "inputs": [
       ],
       "name": "un-crpt-queries-model-8",
-      "source": "// 3.\n// List the indicators with Red value for triggered shocks by flooding\n\ndef triggered_red_indicator_and_shock_subtype(cause, i_c, i_d, i_v, sstn) = \n  indicator_code(i, i_c) and\n  indicator_value(i, i_v) and\n  i_v = \"Red\" and\n  indicator_description(i, i_d) and\n  indicator_to_shock_subtype_name(i, sstn) and\n  sstn = shock_type_name_to_triggered_shock_subtype_name[cause]\n  from i",
+      "source": "// List the indicators with Red value for triggered shocks by flooding\n\ndef triggered_red_indicator_and_shock_subtype(cause, i_c, i_d, i_v, sstn) = \n  indicator_code(i, i_c) and\n  indicator_value(i, i_v) and\n  i_v = \"Red\" and\n  indicator_description(i, i_d) and\n  indicator_to_shock_subtype_name(i, sstn) and\n  sstn = shock_type_name_to_triggered_shock_subtype_name[cause]\n  from i",
       "type": "install"
     },
     {
@@ -136,7 +153,7 @@
       ],
       "isCodeFolded": true,
       "name": "",
-      "source": "### Impact of shocks triggered by flood \n\n a) Which are the urban elements affected by flood\n \n b) Which are the red indicators related to the urban elements impacted by flood and triggered shocks\n",
+      "source": "Impact of shocks triggered by flood \n\n * Which are the urban elements affected by flood\n \n * Which are the red indicators related to the urban elements impacted by flood and triggered shocks\n",
       "type": "markdown"
     },
     {
@@ -144,7 +161,7 @@
       "inputs": [
       ],
       "name": "un-crpt-queries-model-9",
-      "source": "// 4. \n\ndef triggered_shock_subtype_affecting_urban_elements(cause, sstn, e) =\n  sstn = shock_type_name_to_triggered_shock_subtype_name[cause] and\n  shock_subtype_name_to_affected_urban_element(sstn, e)\n",
+      "source": "def triggered_shock_subtype_affecting_urban_elements(cause, sstn, e) =\n  sstn = shock_type_name_to_triggered_shock_subtype_name[cause] and\n  shock_subtype_name_to_affected_urban_element(sstn, e)\n",
       "type": "install"
     },
     {
@@ -154,6 +171,15 @@
       "name": "",
       "source": "def output = triggered_shock_subtype_affecting_urban_elements[\"FLOOD\"]\n\n// only affected urban elements\n//def output = triggered_shock_subtype_affecting_urban_elements[\"FLOOD\"][_]\n",
       "type": "query"
+    },
+    {
+      "id": "51b8e550-d83c-486d-bb7e-397fafe0bdf6",
+      "inputs": [
+      ],
+      "isCodeFolded": true,
+      "name": "",
+      "source": "Long-term impacts\n\n* Stresses impacting the same elements or indicators as Flood",
+      "type": "markdown"
     },
     {
       "id": "14f52635-c854-43ed-afe2-5bec15fd6716",
