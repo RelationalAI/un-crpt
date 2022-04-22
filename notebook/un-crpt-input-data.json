@@ -1,6 +1,14 @@
 {
   "cells": [
     {
+      "id": "492117f4-63af-4cf2-9ced-24ccc5834584",
+      "inputs": [
+      ],
+      "name": "",
+      "source": "# City Resilience Profiling Tool - Data\n\n### Context\n\ngeographical, historical, climate, population (density, distribution), land use, sub-local and supra-local divisions, green and blue spaces, economy, local government organization, etc.\n\n### Indicators\n\nabout 400 specific indicators of relevant aspects of the urban system. (e.g. street density, percentage of urban footprint located in hazardous areas, % of households connected to a wastewater network).\n\n### Challenges in data collection\n\n* No data sources with detailed information at local level.\n* No sharing culture inside local governments and with other stakeholders.\n* Accuracy and reliability of information gathered from local sources.\n\n### Data sources\n\n* SDG Indicators Database: https://unstats.un.org/sdgs/dataportal/database\n* UN Data: https://data.un.org/\n",
+      "type": "markdown"
+    },
+    {
       "id": "13c46a06-98c9-452d-a002-191d08c327ce",
       "inputs": [
       ],
