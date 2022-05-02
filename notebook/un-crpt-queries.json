@@ -24,7 +24,7 @@
       ],
       "isCodeFolded": false,
       "name": "un-crpt-queries-shock_type_name_to_shock_impact_name_and_date",
-      "source": "def shock_type_name_to_shock_impact_subtype_name_and_date = stn, sstn, dt: \n  shock_type_name_to_shock_subtype_name(stn, sstn) and \n  shock_subtype_name_to_shock_impact(sstn, s) and\n  shock_impact_date(s, dt)\n  from s\n",
+      "source": "def shock_type_name_to_shock_impact_subtype_name_and_date(stn, sstn, dt) =\n  shock_type_name_to_shock_subtype_name(stn, sstn) and \n  shock_subtype_name_to_shock_impact(sstn, s) and\n  shock_impact_date(s, dt)\n  from s",
       "type": "install"
     },
     {
@@ -41,7 +41,7 @@
       "inputs": [
       ],
       "name": "",
-      "source": "def output = count[shock_type_name_to_shock_impact_subtype_name_and_date[\"FLOOD\"]]\n",
+      "source": "count[shock_type_name_to_shock_impact_subtype_name_and_date[\"FLOOD\"]]",
       "type": "query"
     },
     {
@@ -58,7 +58,7 @@
       "inputs": [
       ],
       "name": "",
-      "source": "def output = count[shock_impact_date]",
+      "source": "count[shock_impact_date]",
       "type": "query"
     },
     {
@@ -75,7 +75,7 @@
       "inputs": [
       ],
       "name": "un-crpt-queries-model-3",
-      "source": "def shock_type_name_to_shock_and_loss_of_working_days = stn, s, lowd : \n  shock_type_name_to_shock_impact(stn, s) and\n  shock_impact_loss_of_working_days(s, lowd) ",
+      "source": "def shock_type_name_to_shock_and_loss_of_working_days(stn, s, lowd) =\n  shock_type_name_to_shock_impact(stn, s) and\n  shock_impact_loss_of_working_days(s, lowd) ",
       "type": "install"
     },
     {
@@ -83,7 +83,7 @@
       "inputs": [
       ],
       "name": "",
-      "source": "def output = sum[shock_type_name_to_shock_and_loss_of_working_days[\"FLOOD\"]]\n",
+      "source": "sum[shock_type_name_to_shock_and_loss_of_working_days[\"FLOOD\"]]",
       "type": "query"
     },
     {
@@ -100,7 +100,7 @@
       "inputs": [
       ],
       "name": "un-crpt-queries-model-4",
-      "source": "def shock_type_name_to_shock_and_nr_of_people_driectly_affected = stn, s, nr_aff :\n  shock_type_name_to_shock_impact(stn, s) and\n  shock_impact_people_directly_affected(s, nr_aff) \n",
+      "source": "def shock_type_name_to_shock_and_nr_of_people_driectly_affected(stn, s, nr_aff) =\n  shock_type_name_to_shock_impact(stn, s) and\n  shock_impact_people_directly_affected(s, nr_aff) ",
       "type": "install"
     },
     {
@@ -108,7 +108,7 @@
       "inputs": [
       ],
       "name": "",
-      "source": "def output = sum[shock_type_name_to_shock_and_nr_of_people_driectly_affected[\"FLOOD\"]]\n",
+      "source": "sum[shock_type_name_to_shock_and_nr_of_people_driectly_affected[\"FLOOD\"]]",
       "type": "query"
     },
     {
@@ -116,7 +116,7 @@
       "inputs": [
       ],
       "name": "un-crpt-queries-model-12",
-      "source": "def shock_type_name_to_shock_and_loss_of_jobs = stn, s, l_o_j :\n  shock_type_name_to_shock_impact(stn, s) and\n  shock_impact_loss_of_jobs(s, l_o_j) \n  ",
+      "source": "def shock_type_name_to_shock_and_loss_of_jobs(stn, s, l_o_j) =\n  shock_type_name_to_shock_impact(stn, s) and\n  shock_impact_loss_of_jobs(s, l_o_j) ",
       "type": "install"
     },
     {
@@ -131,16 +131,33 @@
       "id": "56467a2a-94ad-423f-9eaf-6764d704a56a",
       "inputs": [
       ],
+      "isCodeFolded": false,
+      "name": "un-crpt-queries-model-14",
+      "source": "def shock_type_to_indicator(stn, i_c, i_d, i_v) =\n  from_shock_type_name(stn, st) and\n  shock_subtype_belongs_to_shock_type(sst, st) and\n  from_shock_subtype_name(sstn, sst) and\n  indicator_code(i, i_c) and\n  indicator_value(i, i_v) and\n  indicator_description(i, i_d) and\n  indicator_to_shock_subtype_name(i, sstn)\n  from i, st, sstn, sst",
+      "type": "install"
+    },
+    {
+      "id": "4fda34f5-68dc-44c6-b179-5e08bd259b6d",
+      "inputs": [
+      ],
       "name": "",
-      "source": "i_c, i_d, i_v:\n  from_shock_type_name(\"FLOOD\", st) and\n  shock_subtype_belongs_to_shock_type(sst, st) and\n  from_shock_subtype_name(sstn, sst) and\n  indicator_code(i, i_c) and\n  indicator_value(i, i_v) and\n  indicator_description(i, i_d) and\n  indicator_to_shock_subtype_name(i, sstn)\n  from i, st, sstn, sst",
+      "source": "shock_type_to_indicator[\"FLOOD\"]",
       "type": "query"
     },
     {
       "id": "2daff6ba-4578-4e48-9107-1a54105a7c54",
       "inputs": [
       ],
+      "name": "un-crpt-queries-model-15",
+      "source": "def indicator_code_to_indicator_attr_shock_subtype_name(i_c, i_d, sstn) =\n  indicator_code(i, i_c) and\n  indicator_description(i, i_d) and\n  indicator_to_shock_subtype_name(i, sstn)\n  from i",
+      "type": "install"
+    },
+    {
+      "id": "7c733940-9471-490e-87e8-f8a1b21f9da8",
+      "inputs": [
+      ],
       "name": "",
-      "source": "i_d, sstn:\n  indicator_code(i, \"3.2.3.3.2\") and\n  indicator_description(i, i_d) and\n  indicator_to_shock_subtype_name(i, sstn)\n  from i",
+      "source": "indicator_code_to_indicator_attr_shock_subtype_name[\"3.2.3.3.2\"]",
       "type": "query"
     },
     {
@@ -166,7 +183,7 @@
       "inputs": [
       ],
       "name": "un-crpt-queries-model-5",
-      "source": "def shock_type_name_to_triggered_shock_subtype_name(stn, tr_sst_n) = \n  shock_type_name_to_shock_impact(stn, s) and\n  shock_impact_caused_shock(s, tr_sst_n)\n  from s\n  ",
+      "source": "def shock_type_name_to_triggered_shock_subtype_name(stn, tr_sst_n) = \n  shock_type_name_to_shock_impact(stn, s) and\n  shock_impact_caused_shock(s, tr_sst_n)\n  from s",
       "type": "install"
     },
     {
@@ -174,7 +191,7 @@
       "inputs": [
       ],
       "name": "",
-      "source": "def output = shock_type_name_to_triggered_shock_subtype_name[\"FLOOD\"]\n",
+      "source": "shock_type_name_to_triggered_shock_subtype_name[\"FLOOD\"]",
       "type": "query"
     },
     {
@@ -182,7 +199,7 @@
       "inputs": [
       ],
       "name": "un-crpt-queries-model-7",
-      "source": "def priority_matter_to_indicator_code_and_value(pm, i_c, i_d, i_v) = \n  indicator_code(i, i_c) and\n  indicator_description(i, i_d) and\n  indicator_value(i, i_v) and\n  indicator_to_prioritymatter_name(i, pm)\n  from i\n",
+      "source": "def priority_matter_to_indicator_code_and_value(pm, i_c, i_d, i_v) = \n  indicator_code(i, i_c) and\n  indicator_description(i, i_d) and\n  indicator_value(i, i_v) and\n  indicator_to_prioritymatter_name(i, pm)\n  from i",
       "type": "install"
     },
     {
@@ -190,7 +207,7 @@
       "inputs": [
       ],
       "name": "",
-      "source": "priority_matter_to_indicator_code_and_value[\"Economic Underperformance\"]\n",
+      "source": "priority_matter_to_indicator_code_and_value[\"Economic Underperformance\"]",
       "type": "query"
     },
     {
@@ -198,7 +215,7 @@
       "inputs": [
       ],
       "name": "un-crpt-queries-model-8",
-      "source": "// List the indicators with Red value for triggered shocks subtypes for a cause\ndef triggered_red_indicator_and_shock_subtype(cause, i_c, i_d, i_v, sstn) = \n  indicator_code(i, i_c) and\n  indicator_value(i, i_v) and\n  i_v = \"Red\" and\n  indicator_description(i, i_d) and\n  indicator_to_shock_subtype_name(i, sstn) and\n  sstn = shock_type_name_to_triggered_shock_subtype_name[cause]\n  from i",
+      "source": "// List the indicators with Red value for triggered shocks subtypes for a cause\ndef triggered_red_indicator_and_shock_subtype(cause, i_c, i_d, i_v, sstn) = \n  indicator_value(i, i_v) and\n  i_v = \"Red\" and\n  indicator_code(i, i_c) and\n  indicator_description(i, i_d) and\n  indicator_to_shock_subtype_name(i, sstn) and\n  sstn = shock_type_name_to_triggered_shock_subtype_name[cause]\n  from i",
       "type": "install"
     },
     {
@@ -206,7 +223,7 @@
       "inputs": [
       ],
       "name": "",
-      "source": "def output = triggered_red_indicator_and_shock_subtype[\"FLOOD\"]",
+      "source": "triggered_red_indicator_and_shock_subtype[\"FLOOD\"]",
       "type": "query"
     },
     {
@@ -222,8 +239,16 @@
       "id": "8336217b-959f-4adc-b6f2-88418de2c58b",
       "inputs": [
       ],
+      "name": "un-crpt-queries-model-16",
+      "source": "def indicator_code_to_indicator_desc_shock_subtype_name(i_c, i_d, sstn) =\n  indicator_code(i, i_c) and\n  indicator_description(i, i_d) and\n  indicator_to_shock_subtype_name(i, sstn)\n  from i",
+      "type": "install"
+    },
+    {
+      "id": "e0898b79-440d-4782-8e31-f1933d4bd3d7",
+      "inputs": [
+      ],
       "name": "",
-      "source": "i_d, sstn:\n  indicator_code(i, \"1.2.2.1\") and\n  indicator_description(i, i_d) and\n  indicator_to_shock_subtype_name(i, sstn)\n  from i",
+      "source": "indicator_code_to_indicator_desc_shock_subtype_name[\"1.2.2.1\"]",
       "type": "query"
     },
     {
@@ -248,7 +273,7 @@
       "inputs": [
       ],
       "name": "",
-      "source": "def output = shock_type_name_to_affected_urban_element[\"FLOOD\"]\n",
+      "source": "shock_type_name_to_affected_urban_element[\"FLOOD\"]",
       "type": "query"
     },
     {
@@ -256,7 +281,7 @@
       "inputs": [
       ],
       "name": "un-crpt-queries-model-9",
-      "source": "def triggered_shock_subtype_affecting_urban_elements(cause, sstn, e) =\n  sstn = shock_type_name_to_triggered_shock_subtype_name[cause] and\n  shock_subtype_name_to_affected_urban_element(sstn, e)\n",
+      "source": "def triggered_shock_subtype_affecting_urban_elements(cause, sstn, e) =\n  sstn = shock_type_name_to_triggered_shock_subtype_name[cause] and\n  shock_subtype_name_to_affected_urban_element(sstn, e)",
       "type": "install"
     },
     {
@@ -264,7 +289,7 @@
       "inputs": [
       ],
       "name": "",
-      "source": "def output = triggered_shock_subtype_affecting_urban_elements[\"FLOOD\"]\n\n// only affected urban elements\n//def output = triggered_shock_subtype_affecting_urban_elements[\"FLOOD\"][_]\n",
+      "source": "triggered_shock_subtype_affecting_urban_elements[\"FLOOD\"]\n\n// only affected urban elements\n//triggered_shock_subtype_affecting_urban_elements[\"FLOOD\"][_]\n",
       "type": "query"
     },
     {
@@ -281,7 +306,7 @@
       "inputs": [
       ],
       "name": "un-crpt-queries-model-10",
-      "source": "def shock_type_to_urban_element_with_stress(stn, uen, strn) = \n  stress_name_to_urban_element_name(strn, uen) and\n  uen = shock_type_name_to_affected_urban_element[stn]\n  ",
+      "source": "def shock_type_to_urban_element_with_stress(stn, uen, strn) = \n  stress_name_to_urban_element_name(strn, uen) and\n  uen = shock_type_name_to_affected_urban_element[stn]",
       "type": "install"
     },
     {
@@ -297,7 +322,7 @@
       "inputs": [
       ],
       "name": "un-crpt-queries-model-11",
-      "source": "// Intersection of stresses + indicators and shocks + indicators\ndef shock_stress_indicators_impacted(stn, strn, i_c, i_d, i_v, sstn) =   \n  indicator_code(i, i_c) and\n  indicator_value(i, i_v) and\n  indicator_description(i, i_d) and\n  indicator_to_shock_subtype_name(i, sstn) and\n  shock_type_name_to_shock_subtype_name(stn, sstn) and \n  indicator_stress(i, str) and\n  stress_from_name(strn, str)\n  from i, str",
+      "source": "// Intersection of stresses + indicators and shocks + indicators\ndef shock_to_stress_indicators_impacted(stn, strn, i_c, i_d, i_v, sstn) =   \n  indicator_code(i, i_c) and\n  indicator_value(i, i_v) and\n  indicator_description(i, i_d) and\n  indicator_to_shock_subtype_name(i, sstn) and\n  shock_type_name_to_shock_subtype_name(stn, sstn) and \n  indicator_stress(i, str) and\n  stress_from_name(strn, str)\n  from i, str",
       "type": "install"
     },
     {
@@ -305,7 +330,7 @@
       "inputs": [
       ],
       "name": "",
-      "source": "shock_stress_indicators_impacted[\"FLOOD\"]",
+      "source": "shock_to_stress_indicators_impacted[\"FLOOD\"]",
       "type": "query"
     },
     {
