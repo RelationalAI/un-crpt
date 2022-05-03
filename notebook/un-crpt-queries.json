@@ -145,6 +145,15 @@
       "type": "query"
     },
     {
+      "id": "015302b5-37a0-449e-8503-ce0c75a85632",
+      "inputs": [
+      ],
+      "isCodeFolded": true,
+      "name": "",
+      "source": "We can now investigate if improving any of these indicators would also help resilience\nagainst different type of shocks. This would be challenging using classic methods, e.g. Excel.",
+      "type": "markdown"
+    },
+    {
       "id": "2daff6ba-4578-4e48-9107-1a54105a7c54",
       "inputs": [
       ],
@@ -166,16 +175,16 @@
       ],
       "isCodeFolded": true,
       "name": "",
-      "source": "NOTE: the data may be incomplete, thus the low number of people\n",
+      "source": "*NOTE*: the data may be incomplete, thus we see no additional shock subtypes here\n",
       "type": "markdown"
     },
     {
-      "id": "0c6d3fc4-88b3-42ca-af7a-fe07d761f286",
+      "id": "5935fa34-cc42-47f1-99bd-458633370c11",
       "inputs": [
       ],
       "isCodeFolded": true,
       "name": "",
-      "source": "Impact of shocks triggered by flood \n\n* Shocks triggered by flood\n* Which are the red indicators related to the shocks triggered by flood \n",
+      "source": "Impact of shocks triggered by flood \n\n* Shocks triggered by flood?\n* Which are the red indicators related to the shocks triggered by flood?\n* How much is \"Economic Underperformance\" is jeopardized by flooding?",
       "type": "markdown"
     },
     {
@@ -290,6 +299,31 @@
       ],
       "name": "",
       "source": "triggered_shock_subtype_affecting_urban_elements[\"FLOOD\"]\n\n// only affected urban elements\n//triggered_shock_subtype_affecting_urban_elements[\"FLOOD\"][_]\n",
+      "type": "query"
+    },
+    {
+      "id": "ff01e6a4-01e3-4b9a-b310-8b5d56862c9b",
+      "inputs": [
+      ],
+      "isCodeFolded": true,
+      "name": "",
+      "source": "In general, we can go beyond 2nd order shock triggers; we can explore the transitively triggered (n-order) shocks for each shock subtype.",
+      "type": "markdown"
+    },
+    {
+      "id": "2a533dda-5088-4b58-be1d-048192af0239",
+      "inputs": [
+      ],
+      "name": "un-crpt-queries-model-17",
+      "source": "def shock_trigger_transitively_other_shock = shock_impact_caused_shock . from_shock_subtype_name . shock_subtype_to_impact\ndef shock_trigger_transitively_other_shock = c, s: \n    shock_trigger_transitively_other_shock(c, m) and\n    shock_trigger_transitively_other_shock(m, s)\n    from m ",
+      "type": "install"
+    },
+    {
+      "id": "15266331-991f-42c7-8bfe-ac1dc5359e40",
+      "inputs": [
+      ],
+      "name": "",
+      "source": "// Printing type names to make the results more readable\nfrom_shock_subtype_name . shock_subtype_to_impact . shock_trigger_transitively_other_shock . shock_impact_subtype . (transpose[from_shock_subtype_name])",
       "type": "query"
     },
     {
