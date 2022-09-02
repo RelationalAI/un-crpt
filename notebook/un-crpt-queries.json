@@ -302,6 +302,14 @@
       "type": "query"
     },
     {
+      "id": "008c82fd-415e-4f48-b9e1-312da85b4ed1",
+      "inputs": [
+      ],
+      "name": "",
+      "source": "shock_type_name_to_shock_impact[\"FLOOD\"]",
+      "type": "query"
+    },
+    {
       "id": "ff01e6a4-01e3-4b9a-b310-8b5d56862c9b",
       "inputs": [
       ],
@@ -315,7 +323,7 @@
       "inputs": [
       ],
       "name": "un-crpt-queries-model-17",
-      "source": "def shock_trigger_transitively_other_shock = shock_impact_caused_shock . from_shock_subtype_name . shock_subtype_to_impact\ndef shock_trigger_transitively_other_shock = c, s: \n    shock_trigger_transitively_other_shock(c, m) and\n    shock_trigger_transitively_other_shock(m, s)\n    from m ",
+      "source": "def shock_trigger_transitively_other_shock = shock_impact_caused_shock . from_shock_subtype_name . shock_subtype_to_impact\ndef shock_trigger_transitively_other_shock = c, s: \n    shock_trigger_transitively_other_shock(c, m) and\n    shock_trigger_transitively_other_shock(m, s)\n    from m \n\ndef floodings = shock_type_name_to_shock_impact[\"FLOOD\"]",
       "type": "install"
     },
     {
@@ -323,7 +331,7 @@
       "inputs": [
       ],
       "name": "",
-      "source": "// Printing type names to make the results more readable\nfrom_shock_subtype_name . shock_subtype_to_impact . shock_trigger_transitively_other_shock . shock_impact_subtype . (transpose[from_shock_subtype_name])",
+      "source": "def output = floodings . shock_impact_caused_shock . from_shock_subtype_name . shock_subtype_to_impact. shock_impact_subtype . (transpose[from_shock_subtype_name])",
       "type": "query"
     },
     {
@@ -356,7 +364,7 @@
       "inputs": [
       ],
       "name": "un-crpt-queries-model-11",
-      "source": "// Intersection of stresses + indicators and shocks + indicators\ndef shock_to_stress_indicators_impacted(stn, strn, i_c, i_d, i_v, sstn) =   \n  indicator_code(i, i_c) and\n  indicator_value(i, i_v) and\n  indicator_description(i, i_d) and\n  indicator_to_shock_subtype_name(i, sstn) and\n  shock_type_name_to_shock_subtype_name(stn, sstn) and \n  indicator_stress(i, str) and\n  stress_from_name(strn, str)\n  from i, str",
+      "source": "// Intersection of stresses + indicators and shocks + indicators\ndef shock_to_stress_indicators_impacted(stn, strn, i_c, i_d, i_v) =   \n  indicator_code(i, i_c) and\n  indicator_value(i, i_v) and\n  indicator_description(i, i_d) and\n  indicator_to_shock_subtype_name(i, sstn) and\n  shock_type_name_to_shock_subtype_name(stn, sstn) and \n  indicator_stress(i, str) and\n  stress_from_name(strn, str)\n  from i, str, sstn",
       "type": "install"
     },
     {
@@ -371,9 +379,9 @@
       "id": "4d9fd937-0d94-4216-b7d5-2554f54bb070",
       "inputs": [
       ],
-      "isCodeFolded": true,
+      "isCodeFolded": false,
       "name": "un-crpt-queries-helpers",
-      "source": "// Helper relations - not part of the discussions during the main demo\n\ndef shock_type_name_to_shock_subtype_name(stn, sstn) = \n  from_shock_type_name(stn, st) and\n  from_shock_subtype_name(sstn, sst) and\n  shock_subtype_belongs_to_shock_type(sst, st)\n  from sst, st\n\ndef shock_subtype_name_to_shock_impact(sstn, s) = \n  shock_subtype_to_impact(sst, s) and\n  from_shock_subtype_name(sstn, sst)\n  from sst\n\ndef shock_subtype_name_to_affected_urban_element(sstn, e) = \n  from_shock_subtype_name(sstn, sst) and\n  shock_impact_subtype(s, sst) and\n  shock_impact_affected_urban_elements(s, e)\n  from sst, s\n\ndef shock_type_name_to_affected_urban_element(stn, e) = \n  from_shock_type_name(stn, st) and\n  shock_type_contains_shock_subtype(st, sst) and\n  shock_impact_subtype(s, sst) and\n  shock_impact_affected_urban_elements(s, e)\n  from sst, st, s\n\ndef shock_type_name_to_shock_impact = \n  shock_type_name_to_shock_subtype_name . shock_subtype_name_to_shock_impact\n\ndef indicator_to_prioritymatter_name(i, pmn) = \n  indicator_prioritymatter(i, pm) and \n  prioritymatter:priority_matter(pm, pmn) \n  from pm\n\ndef indicator_to_shock_subtype_name(i, sstn) = \n  indicator_shock_subtype(i, sst) and\n  from_shock_subtype_name(sstn, sst)\n  from sst\n\ndef stress_name_to_urban_element_name(strn, uen) = \n  (stress_from_name . stress_urban_element_code)(strn, uec) and\n  urban_element_code(ue, uec) and\n  urban_element_name(ue, uen)\n  from ue, uec\n",
+      "source": "// Helper relations\n\ndef shock_type_name_to_shock_subtype_name(stn, sstn) = \n  from_shock_type_name(stn, st) and\n  from_shock_subtype_name(sstn, sst) and\n  shock_subtype_belongs_to_shock_type(sst, st)\n  from sst, st\n\ndef shock_subtype_name_to_shock_impact(sstn, s) = \n  shock_subtype_to_impact(sst, s) and\n  from_shock_subtype_name(sstn, sst)\n  from sst\n\ndef shock_subtype_name_to_affected_urban_element(sstn, e) = \n  from_shock_subtype_name(sstn, sst) and\n  shock_impact_subtype(s, sst) and\n  shock_impact_affected_urban_elements(s, e)\n  from sst, s\n\ndef shock_type_name_to_affected_urban_element(stn, e) = \n  from_shock_type_name(stn, st) and\n  shock_type_contains_shock_subtype(st, sst) and\n  shock_impact_subtype(s, sst) and\n  shock_impact_affected_urban_elements(s, e)\n  from sst, st, s\n\ndef shock_type_name_to_shock_impact = \n  shock_type_name_to_shock_subtype_name . shock_subtype_name_to_shock_impact\n\ndef indicator_to_prioritymatter_name(i, pmn) = \n  indicator_prioritymatter(i, pm) and \n  prioritymatter:priority_matter(pm, pmn) \n  from pm\n\ndef indicator_to_shock_subtype_name(i, sstn) = \n  indicator_shock_subtype(i, sst) and\n  from_shock_subtype_name(sstn, sst)\n  from sst\n\ndef stress_name_to_urban_element_name(strn, uen) = \n  (stress_from_name . stress_urban_element_code)(strn, uec) and\n  urban_element_code(ue, uec) and\n  urban_element_name(ue, uen)\n  from ue, uec\n",
       "type": "install"
     }
   ],
