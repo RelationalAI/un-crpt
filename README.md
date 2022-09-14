@@ -13,4 +13,4 @@ This repository holds the resources for the UN-CPRT project. The folder structur
 
 Import the three notebook files found under the _notebook_ folder to get started. These contain both the CSV data, model, and the present queries. 
 
-To make changes, just export the updated notebook(s) and update the files on GitHub.
+_For contributors_: to make changes, just export the updated notebook(s) and update the files on GitHub.
